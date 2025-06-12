@@ -39,6 +39,36 @@
                 <div class="about-col-2">
                     <h1 class="sub-title">About Me</h1>
                     <p>I am a Cybersecurity Consultant with a strong background in computer science, specializing in threat analysis, penetration testing, and secure system design. I focus on delivering proactive, scalable solutions that enhance digital resilience. Through continuous learning and collaboration, I help organizations build and maintain robust cybersecurity defenses.</p>
+                    <div class="tab-titles">
+                        <p class = "tab-links active-link" onclick="opentab('skills',event)">Skills</p>
+                        <p class = "tab-links" onclick="opentab('experience',event)">Experience</p>
+                        <p class = "tab-links" onclick="opentab('education',event)">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>UI?UX</span><br>Design web/App interfaces</li>
+                            <li><span>Web Development</span><br>Web app development</li>
+                            <li><span>App Development</span><br>Building Android/IOS App</li>
+
+                        </ul>
+                    </div>
+
+                    <div class="tab-contents" id ="experience">
+                        <ul>
+                            <li><span>2025 Jan-current</span><br>Cyber Security Engineer at WS02</li>
+                            <li><span>2024 June - 2024 Dec</span><br>Intern - Cyber Security Engineer at WS02</li>
+                            <li><span>2024 Jan - 2024 May</span><br>Help Desk at WS02</li>
+
+                        </ul>
+                    </div>
+
+                    <div class="tab-contents" id ="education">
+                        <ul>
+                            <li><span>2025 - current</span><br>Masters In Cyber security at USCS</li>
+                            <li><span>2023 - 2025</span><br>Baachelor in Computer Science</li>
+
+                        </ul>
+                    </div>
 
                 </div>    
                 
@@ -47,5 +77,24 @@
     </div>
 
 </body>
+
+<script>
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname, event) {
+        for (tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+
+        for (tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab"); 
+}
+
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+
+</script>
             
 </html>

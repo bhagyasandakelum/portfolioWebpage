@@ -14,13 +14,15 @@
         <div class="container">
             <nav>
                 <img src = "Images/logo.png" class="logo" >
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Contact</a></li>
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
                 </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
             </nav>
             <div class="header-text">
                 <p>Cyber Security Consultant</p>
@@ -79,7 +81,7 @@
 
     <!---Services-------->
 
-    <div class="sericies">
+    <div class="services">
         <div class="container">
             <h1 class="sub-title">My Services</h1>
             <div class="services-list">
@@ -105,6 +107,81 @@
             
         </div>
     </div>
+    <!-------Portfolio-->
+
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">My Work</h1>
+            <div class="work-list">
+                 <div class="work">
+                    <img src="Images/portfolio1.jpg" >
+                    <div class="layer">
+                        <h3>Ethical hacking</h3>
+                        <p>Ethical hacking involves authorized testing of systems to identify vulnerabilities and enhance security.</p>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                 </div>
+                 <div class="work">
+                    <img src="Images/portfolio2.jpg" >
+                    <div class="layer">
+                        <h3>Analysis</h3>
+                        <p>Ethical hacking involves authorized testing of systems to identify vulnerabilities and enhance security.</p>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                 </div>
+                 <div class="work">
+                    <img src="Images/portfolio3.jpg" >
+                    <div class="layer">
+                        <h3>Build defenses</h3>
+                        <p>Ethical hacking involves authorized testing of systems to identify vulnerabilities and enhance security.</p>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                 </div>
+            </div>
+            <a href="#" class="btn">See More</a>
+        </div>
+
+    </div>
+
+    <!-------Contact-->
+
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">contact me</h1>
+                    <p><i class="fa-solid fa-paper-plane"></i>bhagya@dev.com</p>
+                    <p><i class="fa-solid fa-phone"></i>+94710870119</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+
+
+                    </div>
+
+                    <a href="Images/document.pdf" download class="btn btn2">Download CV</a>
+
+                </div>
+                <div class="contact-right">
+
+                    <form>
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                </div>
+
+                
+            </div>
+        </div>
+        <div class="copyright">
+            <p>copyright BhagysLive.2025</p>
+        </div>
+    </div>
+
 
 </body>
 
@@ -125,6 +202,16 @@
         document.getElementById(tabname).classList.add("active-tab");
     }
 
+</script>
+
+<script>
+    var sidemenu = document.getElementById("sidemenu");
+    function openmenu(){
+        sidemenu.style.right = "0";
+    }
+    function closemenu(){
+        sidemenu.style.right = "-200px";
+    }
 </script>
             
 </html>

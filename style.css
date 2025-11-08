@@ -1,3 +1,4 @@
+/* === GLOBAL RESET === */
 * {
   margin: 0;
   padding: 0;
@@ -5,9 +6,26 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* === THEME VARIABLES === */
+:root {
+  --bg-color: #080808;
+  --text-color: #ffffff;
+  --accent-color: #ff004f;
+  --card-bg: #262626;
+}
+
+.light-theme {
+  --bg-color: #f5f5f5;
+  --text-color: #111111;
+  --accent-color: #007bff;
+  --card-bg: #ffffff;
+}
+
+/* === GLOBAL COLORS === */
 body {
-  background: #080808;
-  color: white;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.4s, color 0.4s;
 }
 
 /* HEADER */
@@ -36,6 +54,22 @@ nav {
   width: 140px;
 }
 
+/* THEME TOGGLE BUTTON */
+.theme-btn {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: 12px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.theme-btn:hover {
+  transform: rotate(20deg);
+  color: var(--accent-color);
+}
+
 nav ul {
   list-style: none;
   display: flex;
@@ -47,7 +81,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: white;
+  color: var(--text-color);
   font-size: 18px;
   position: relative;
 }
@@ -56,7 +90,7 @@ nav ul li a::after {
   content: '';
   width: 0;
   height: 3px;
-  background: #ff004f;
+  background: var(--accent-color);
   position: absolute;
   left: 0;
   bottom: -6px;
@@ -69,7 +103,7 @@ nav ul li a:hover::after {
 
 .menu-icon {
   font-size: 30px;
-  color: white;
+  color: var(--text-color);
   display: none;
   cursor: pointer;
   z-index: 101;
@@ -80,7 +114,6 @@ nav ul li a:hover::after {
   display: none;
 }
 
-/* Show only one icon at a time based on menu visibility */
 nav .menu-toggle {
   display: none;
 }
@@ -96,7 +129,7 @@ nav .menu-toggle {
 }
 
 .header-text h1 span {
-  color: #ff004f;
+  color: var(--accent-color);
 }
 
 /* ABOUT SECTION */
@@ -123,7 +156,7 @@ nav .menu-toggle {
 
 .sub-title {
   font-size: 40px;
-  color: white;
+  color: var(--text-color);
 }
 
 .tab-titles {
@@ -143,7 +176,7 @@ nav .menu-toggle {
   content: '';
   width: 0;
   height: 3px;
-  background: #ff004f;
+  background: var(--accent-color);
   position: absolute;
   left: 0;
   bottom: -8px;
@@ -185,14 +218,14 @@ nav .menu-toggle {
 }
 
 .services-list div {
-  background: #262626;
+  background: var(--card-bg);
   padding: 40px;
   border-radius: 10px;
   transition: 0.5s;
 }
 
 .services-list div:hover {
-  background: #ff004f;
+  background: var(--accent-color);
   transform: translateY(-10px);
 }
 
@@ -208,7 +241,7 @@ nav .menu-toggle {
 
 .services-list div a {
   text-decoration: none;
-  color: white;
+  color: var(--text-color);
   font-size: 12px;
   display: inline-block;
   margin-top: 20px;
@@ -244,7 +277,7 @@ nav .menu-toggle {
   height: 0;
   left: 0;
   bottom: 0;
-  background: linear-gradient(rgba(0,0,0,0.6), #ff004f);
+  background: linear-gradient(rgba(0,0,0,0.6), var(--accent-color));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -263,7 +296,7 @@ nav .menu-toggle {
 
 .layer a {
   margin-top: 20px;
-  color: #ff004f;
+  color: var(--accent-color);
   background: white;
   display: inline-block;
   width: 60px;
@@ -283,26 +316,26 @@ nav .menu-toggle {
   height: 100%;
 }
 
-/* BUTTON */
+/* BUTTONS */
 .btn {
   display: block;
   margin: 50px auto;
   padding: 14px 50px;
-  border: 1px solid #ff004f;
+  border: 1px solid var(--accent-color);
   border-radius: 6px;
-  color: white;
+  color: var(--text-color);
   text-decoration: none;
   transition: background 0.5s;
   width: fit-content;
 }
 
 .btn:hover {
-  background: #ff004f;
+  background: var(--accent-color);
 }
 
 .btn2 {
   display: inline-block;
-  background: #ff004f;
+  background: var(--accent-color);
 }
 
 /* CONTACT */
@@ -315,7 +348,7 @@ nav .menu-toggle {
 }
 
 .contact-left p i {
-  color: #ff004f;
+  color: var(--accent-color);
   margin-right: 15px;
   font-size: 25px;
 }
@@ -329,18 +362,18 @@ nav .menu-toggle {
 }
 
 .social-icons a:hover {
-  color: #ff004f;
+  color: var(--accent-color);
   transform: translateY(-5px);
 }
 
 form input, form textarea {
   width: 100%;
-  background: #262626;
+  background: var(--card-bg);
   border: none;
   outline: none;
   padding: 15px;
   margin: 15px 0;
-  color: white;
+  color: var(--text-color);
   font-size: 18px;
   border-radius: 6px;
 }
@@ -354,10 +387,11 @@ form .btn2 {
 .copyright {
   text-align: center;
   padding: 25px 0;
-  background: #262626;
+  background: var(--card-bg);
   font-weight: 300;
   font-size: 14px;
   margin-top: 20px;
+  transition: background 0.4s, color 0.4s;
 }
 
 /* MEDIA QUERIES */
@@ -367,7 +401,7 @@ form .btn2 {
     position: fixed;
     top: 0;
     right: -100%;
-    background: #ff004f;
+    background: var(--accent-color);
     width: 200px;
     height: 100vh;
     padding-top: 60px;

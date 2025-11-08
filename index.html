@@ -1,227 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhagya Sandakelum</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/cfe2533290.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhagya Sandakelum</title>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/cfe2533290.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="header">
-        <div class="container">
-            <nav>
-                <img src = "Images/logo.png" class="logo" >
-                <ul id="sidemenu">
-                    <li><a href="#header">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    
-                </ul>
-                
-            </nav>
-            
+  <!-- HEADER -->
+  <div id="header">
+    <div class="container">
+      <nav>
+        <img src="Images/logo.png" class="logo" alt="Logo">
 
-            <div class="header-text">
-                <p>Cyber Security Consultant</p>
-                <h1>Hi,I'm <span>Bhagya</span> Sandakelum<br>from Sri Lanka</h1>
-            </div>
-        </div>
+        <!-- 🌗 Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-btn" title="Switch Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
 
+        <ul id="sidemenu">
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-text">
+        <p>Cyber Security Consultant</p>
+        <h1>Hi, I'm <span>Bhagya</span> Sandakelum<br>from Sri Lanka</h1>
+      </div>
     </div>
+  </div>
 
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src = "Images/user.jpg">
-                </div>
-
-                <div class="about-col-2">
-                    <h1 class="sub-title">About Me</h1>
-                    <p>I am a Cybersecurity Consultant with a strong background in computer science, specializing in threat analysis, penetration testing, and secure system design. I focus on delivering proactive, scalable solutions that enhance digital resilience. Through continuous learning and collaboration, I help organizations build and maintain robust cybersecurity defenses.</p>
-                    <div class="tab-titles">
-                        <p class = "tab-links active-link" onclick="opentab('skills',event)">Skills</p>
-                        <p class = "tab-links" onclick="opentab('experience',event)">Experience</p>
-                        <p class = "tab-links" onclick="opentab('education',event)">Education</p>
-                    </div>
-                    <div class="tab-contents active-tab" id="skills">
-                        <ul>
-                            <li><span>UI/UX</span><br>Design web/App interfaces</li>
-                            <li><span>Web Development</span><br>Web app development</li>
-                            <li><span>App Development</span><br>Building Android/IOS App</li>
-
-                        </ul>
-                    </div>
-
-                    <div class="tab-contents" id ="experience">
-                        <ul>
-                            <li><span>2025 Jan-current</span><br>Cyber Security Engineer at WS02</li>
-                            <li><span>2024 June - 2024 Dec</span><br>Intern - Cyber Security Engineer at WS02</li>
-                            <li><span>2024 Jan - 2024 May</span><br>Help Desk at WS02</li>
-
-                        </ul>
-                    </div>
-
-                    <div class="tab-contents" id ="education">
-                        <ul>
-                            <li><span>2025 - current</span><br>Masters In Cyber security at USCS</li>
-                            <li><span>2023 - 2025</span><br>Baachelor in Computer Science</li>
-
-                        </ul>
-                    </div>
-
-                </div>    
-                
-            </div>
+  <!-- ABOUT -->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+          <img src="Images/user.jpg" alt="Bhagya">
         </div>
+
+        <div class="about-col-2">
+          <h1 class="sub-title">About Me</h1>
+          <p>
+            I am a Cybersecurity Consultant with a strong background in computer science, specializing in threat analysis, penetration testing, and secure system design. I focus on delivering proactive, scalable solutions that enhance digital resilience.
+          </p>
+
+          <div class="tab-titles">
+            <p class="tab-links active-link" onclick="openTab('skills', event)">Skills</p>
+            <p class="tab-links" onclick="openTab('experience', event)">Experience</p>
+            <p class="tab-links" onclick="openTab('education', event)">Education</p>
+          </div>
+
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li><span>UI/UX</span><br>Design web/app interfaces</li>
+              <li><span>Web Development</span><br>Web app development</li>
+              <li><span>App Development</span><br>Building Android/iOS Apps</li>
+            </ul>
+          </div>
+
+          <div class="tab-contents" id="experience">
+            <ul>
+              <li><span>2025 Jan - Current</span><br>Cyber Security Engineer at WSO2</li>
+              <li><span>2024 Jun - 2024 Dec</span><br>Intern - Cyber Security Engineer at WSO2</li>
+              <li><span>2024 Jan - 2024 May</span><br>Help Desk at WSO2</li>
+            </ul>
+          </div>
+
+          <div class="tab-contents" id="education">
+            <ul>
+              <li><span>2025 - Current</span><br>Masters in Cybersecurity at UCSC</li>
+              <li><span>2023 - 2025</span><br>Bachelor in Computer Science</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!---Services-------->
-
-    <div class="services">
-        <div class="container">
-            <h1 class="sub-title">My Services</h1>
-            <div class="services-list">
-                <div>
-                    <i class="fa-brands fa-hacker-news"></i>
-                    <h3>Penestration Testing</h3>
-                    <p>Penetration testing simulates cyberattacks to identify and fix security vulnerabilities in systems or networks.</p>
-                    <a href="#">Learn More</a>
-                </div>
-                <div>
-                    <i class="fa-regular fa-compass"></i>
-                    <h3>Threat Detection and Prevention</h3>
-                    <p>Monitors systems for suspicious activity and implements tools to detect, prevent, and respond to cyber threats.</p>
-                    <a href="#">Learn More</a>
-                </div>
-                <div>
-                    <i class="fa-solid fa-magnifying-glass-chart"></i>
-                    <h3>Security Audits</h3>
-                    <p>Conducts comprehensive reviews of security policies, procedures, and controls to ensure compliance and effectiveness.</p>
-                    <a href="#">Learn More</a>
-
-            </div>
-            
+  <!-- SERVICES -->
+  <div class="services" id="services">
+    <div class="container">
+      <h1 class="sub-title">My Services</h1>
+      <div class="services-list">
+        <div>
+          <i class="fa-solid fa-user-shield"></i>
+          <h3>Penetration Testing</h3>
+          <p>Simulates cyberattacks to identify and fix vulnerabilities in systems or networks.</p>
+          <a href="#">Learn More</a>
         </div>
+        <div>
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <h3>Threat Detection & Prevention</h3>
+          <p>Monitors and prevents security breaches using proactive detection systems.</p>
+          <a href="#">Learn More</a>
+        </div>
+        <div>
+          <i class="fa-solid fa-clipboard-check"></i>
+          <h3>Security Audits</h3>
+          <p>Comprehensive reviews of security policies, procedures, and controls for compliance.</p>
+          <a href="#">Learn More</a>
+        </div>
+      </div>
     </div>
-    <!-------Portfolio-->
+  </div>
 
-    <div id="portfolio">
-        <div class="container">
-            <h1 class="sub-title">My Work</h1>
-            <div class="work-list">
-                 <div class="work">
-                    <img src="Images/portfolio1.jpg" >
-                    <div class="layer">
-                        <h3>Ethical hacking</h3>
-                        <p>Ethical hacking involves authorized testing of systems to identify vulnerabilities and enhance security.</p>
-                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                 </div>
-                 <div class="work">
-                    <img src="Images/portfolio2.jpg" >
-                    <div class="layer">
-                        <h3>Analysis</h3>
-                        <p>Ethical hacking involves authorized testing of systems to identify vulnerabilities and enhance security.</p>
-                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                 </div>
-                 <div class="work">
-                    <img src="Images/portfolio3.jpg" >
-                    <div class="layer">
-                        <h3>Build defenses</h3>
-                        <p>Ethical hacking involves authorized testing of systems to identify vulnerabilities and enhance security.</p>
-                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                 </div>
-            </div>
-            <a href="#" class="btn">See More</a>
+  <!-- PORTFOLIO -->
+  <div id="portfolio">
+    <div class="container">
+      <h1 class="sub-title">My Work</h1>
+      <div class="work-list">
+        <div class="work">
+          <img src="Images/portfolio1.jpg" alt="Work 1">
+          <div class="layer">
+            <h3>Ethical Hacking</h3>
+            <p>Authorized security testing to identify and patch vulnerabilities.</p>
+            <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
         </div>
-
+        <div class="work">
+          <img src="Images/portfolio2.jpg" alt="Work 2">
+          <div class="layer">
+            <h3>Threat Analysis</h3>
+            <p>Analyzing systems to anticipate and mitigate potential threats.</p>
+            <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="Images/portfolio3.jpg" alt="Work 3">
+          <div class="layer">
+            <h3>Security Solutions</h3>
+            <p>Building robust defenses and response strategies for enterprises.</p>
+            <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="btn">See More</a>
     </div>
+  </div>
 
-    <!-------Contact-->
+  <!-- CONTACT -->
+  <div id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="contact-left">
+          <h1 class="sub-title">Contact Me</h1>
+          <p><i class="fa-solid fa-paper-plane"></i> bhagya@dev.com</p>
+          <p><i class="fa-solid fa-phone"></i> +94 710870119</p>
 
-    <div id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="contact-left">
-                    <h1 class="sub-title">contact me</h1>
-                    <p><i class="fa-solid fa-paper-plane"></i>bhagya@dev.com</p>
-                    <p><i class="fa-solid fa-phone"></i>+94710870119</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#"><i class="fa-brands fa-github"></i></a>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+          </div>
 
-
-                    </div>
-
-                    <a href="Images/document.pdf" download class="btn btn2">Download CV</a>
-
-                </div>
-                <div class="contact-right">
-
-                    <form>
-                        <input type="text" name="mame" placeholder="Your Name" required>
-                        <input type="email" name="Email" placeholder="Your Email" required>
-                        <textarea name="Message" placeholder="Your Message"></textarea>
-                        <button type="submit" class="btn btn2">Submit</button>
-                    </form>
-                </div>
-
-                
-            </div>
+          <a href="Images/document.pdf" download class="btn btn2">Download CV</a>
         </div>
-        <div class="copyright">
-            <p>Copyright © 2025 | Bhagya Sandakelum</p>
+
+        <div class="contact-right">
+          <form>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message"></textarea>
+            <button type="submit" class="btn btn2">Submit</button>
+          </form>
         </div>
+      </div>
     </div>
+    <div class="copyright">
+      <p>Copyright © 2025 | Bhagya Sandakelum</p>
+    </div>
+  </div>
 
-
+  <script src="action.js"></script>
 </body>
-
-<script>
-    var tablinks = document.getElementsByClassName("tab-links");
-    var tabcontents = document.getElementsByClassName("tab-contents");
-
-    function opentab(tabname, event) {
-        for (tablink of tablinks){
-            tablink.classList.remove("active-link");
-        }
-
-        for (tabcontent of tabcontents){
-            tabcontent.classList.remove("active-tab"); 
-}
-
-        event.currentTarget.classList.add("active-link");
-        document.getElementById(tabname).classList.add("active-tab");
-    }
-
-</script>
-
-<script>
-    var sidemenu = document.getElementById("sidemenu");
-    function openmenu(){
-        sidemenu.style.right = "0";
-    }
-    function closemenu(){
-        sidemenu.style.right = "-200px";
-    }
-</script>
-
-<script>
-  function toggleMenu() {
-    const navLinks = document.querySelector("nav ul");
-    navLinks.classList.toggle("show");
-  }
-</script>
-
-            
 </html>

@@ -10,14 +10,18 @@ export default function Portfolio() {
     { id: 'education', label: 'Education', icon: BookOpen },
     { id: 'certificates', label: 'Certificates', icon: Award },
     { id: 'projects', label: 'Projects', icon: Code },
-    { id: 'blog', label: 'Blog', icon: FileText },
+    { id: 'blog', label: 'Blog', icon: FileText, external: 'https://hash-cs.blogspot.com/' },
     { id: 'contact', label: 'Contact', icon: Mail }
   ];
 
   const scrollToSection = (id) => {
-    setActiveSection(id);
-    setMobileMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    if (id === 'blog') {
+      window.open(sections.find(section => section.id === id).external, '_blank');
+    } else {
+      setActiveSection(id);
+      setMobileMenuOpen(false);
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -90,9 +94,9 @@ export default function Portfolio() {
               <div className="flex justify-center">
                 <div className="relative">
                   <div className="w-80 h-80 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center overflow-hidden border-4 border-blue-500/50 shadow-2xl shadow-blue-500/50">
-                    {/* Replace this div with your actual image */}
+                    {/* Replace this div with your actual image - place image.png in the public folder */}
                     <img 
-                      src="https://via.placeholder.com/400x400/1e3a8a/60a5fa?text=Your+Photo" 
+                      src="/image.png" 
                       alt="bhagyaslive"
                       className="w-full h-full object-cover"
                     />
@@ -146,9 +150,9 @@ export default function Portfolio() {
             <div className="space-y-8">
               <div className="bg-blue-900/20 border border-blue-800/50 rounded-xl p-6 hover:border-blue-600 transition-all">
                 <h3 className="text-2xl font-bold text-blue-400 mb-2">Bachelor's in Computer Science</h3>
-                <p className="text-gray-300 mb-2">University Name | 2018 - 2022</p>
+                <p className="text-gray-300 mb-2">University of Jaffna | 2023 - present</p>
                 <p className="text-gray-400">
-                  Focused on software engineering, algorithms, and web development. Graduated with honors.
+                  Studying core computer science subjects with a focus on cybersecurity and software development.
                 </p>
               </div>
               <div className="bg-blue-900/20 border border-blue-800/50 rounded-xl p-6 hover:border-blue-600 transition-all">
@@ -212,38 +216,6 @@ export default function Portfolio() {
                     <a href="#" className="text-blue-400 hover:text-blue-300 flex items-center">
                       View Project <ExternalLink size={16} className="ml-2" />
                     </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Blog Section */}
-        <section id="blog" className="min-h-screen flex items-center px-4 py-20">
-          <div className="max-w-5xl mx-auto w-full">
-            <h2 className="text-4xl font-bold mb-12 text-center">
-              <FileText className="inline-block mr-3 mb-2" size={40} />
-              Blog
-            </h2>
-            <div className="space-y-6">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-blue-900/20 border border-blue-800/50 rounded-xl p-6 hover:border-blue-600 transition-all group cursor-pointer">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
-                        Blog Post Title {i}
-                      </h3>
-                      <p className="text-gray-400 mb-4">
-                        This is a preview of the blog post content. It gives readers an idea of what the article is about...
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-500">Jan 15, 2024 • 5 min read</span>
-                        <span className="text-blue-400 flex items-center">
-                          Read More <ExternalLink size={16} className="ml-2" />
-                        </span>
-                      </div>
-                    </div>
                   </div>
                 </div>
               ))}

@@ -259,14 +259,13 @@ export default function Portfolio() {
                     System Online
                   </p>
                   <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight">
-                    Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Bhagya</span>
+                    Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Bhagya Sandakelum</span>
                   </h1>
                   <p className="text-xl md:text-2xl text-gray-400 mb-8 font-light border-l-4 border-cyan-500 pl-4">
-                    Security Engineer | <span className="text-cyan-400">Cybersecurity Specialist</span>
+                    Aspiring Security Engineer<br /> <span className="text-cyan-400">Computer Science Undergraduate</span>
                   </p>
                   <p className="text-gray-400 mb-8 leading-relaxed max-w-lg">
-                    Excecuting secure system protocols and developing robust applications.
-                    Passionate about defending digital infrastructures and solving complex security challenges.
+                    Full stack developer, cybersecurity enthusiast, and IEEE volunteer passionate about building secure, scalable applications and driving impactful tech communities.
                   </p>
 
                   <div className="flex flex-wrap gap-4 mb-8">
@@ -287,13 +286,24 @@ export default function Portfolio() {
                     ))}
                   </div>
 
-                  <button
-                    onClick={() => scrollToSection("contact")}
-                    className="px-8 py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono rounded hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center gap-2 group"
-                  >
-                    <Mail size={18} />
-                    <span>Contact Me</span>
-                  </button>
+                  <div className="flex flex-wrap gap-4">
+                    <button
+                      onClick={() => scrollToSection("contact")}
+                      className="px-8 py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono rounded hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center gap-2 group"
+                    >
+                      <Mail size={18} />
+                      <span>Contact Me</span>
+                    </button>
+                    <a
+                      href="#" // Replace with your Google Drive PDF link
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-8 py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono rounded hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center gap-2 group"
+                    >
+                      <FileText size={18} />
+                      <span>Resume</span>
+                    </a>
+                  </div>
                 </motion.div>
               </div>
             </div>
@@ -306,14 +316,21 @@ export default function Portfolio() {
           <div className="flex animate-[scroll_20s_linear_infinite] gap-12 whitespace-nowrap relative z-10 items-center">
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex gap-12 text-cyan-500/50 font-mono text-xl font-bold uppercase tracking-widest">
-                <span>Cybersecurity</span> <Zap size={16} className="text-blue-500" />
-                <span>Network Defense</span> <Zap size={16} className="text-blue-500" />
-                <span>React</span> <Zap size={16} className="text-blue-500" />
-                <span>Penetration Testing</span> <Zap size={16} className="text-blue-500" />
-                <span>Cryptography</span> <Zap size={16} className="text-blue-500" />
                 <span>Python</span> <Zap size={16} className="text-blue-500" />
-                <span>Secure Coding</span> <Zap size={16} className="text-blue-500" />
-                <span>System Architecture</span> <Zap size={16} className="text-blue-500" />
+                <span>JavaScript</span> <Zap size={16} className="text-blue-500" />
+                <span>Java</span> <Zap size={16} className="text-blue-500" />
+                <span>PHP</span> <Zap size={16} className="text-blue-500" />
+                <span>CSS</span> <Zap size={16} className="text-blue-500" />
+                <span>TailwindCSS</span> <Zap size={16} className="text-blue-500" />
+                <span>React</span> <Zap size={16} className="text-blue-500" />
+                <span>Next</span> <Zap size={16} className="text-blue-500" />
+                <span>NodeJS</span> <Zap size={16} className="text-blue-500" />
+                <span>MongoDB</span> <Zap size={16} className="text-blue-500" />
+                <span>MySQL</span> <Zap size={16} className="text-blue-500" />
+                <span>Docker</span> <Zap size={16} className="text-blue-500" />
+                <span>GitHub</span> <Zap size={16} className="text-blue-500" />
+                <span>Postman</span> <Zap size={16} className="text-blue-500" />
+                <span>SQLite</span> <Zap size={16} className="text-blue-500" />
               </div>
             ))}
           </div>

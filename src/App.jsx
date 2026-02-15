@@ -234,7 +234,7 @@ export default function Portfolio() {
                 transition={{ duration: 0.8 }}
                 className="flex justify-center order-2 md:order-1"
               >
-                <div className="relative group w-72 h-72 md:w-80 md:h-80">
+                <div className="relative group w-80 h-80 md:w-[450px] md:h-[450px]">
                   {/* Rotating decorative rings */}
                   <div className="absolute inset-0 rounded-full border-2 border-cyan-500/30 border-dashed animate-[spin_10s_linear_infinite]" />
                   <div className="absolute -inset-4 rounded-full border border-blue-600/20 animate-[spin_15s_linear_infinite_reverse]" />

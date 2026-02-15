@@ -19,6 +19,8 @@ import {
   Award,
   Zap, // Added for skills
   BookOpen,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 // --- Matrix Rain Effect Component ---
@@ -99,6 +101,16 @@ const CyberCard = ({ children, className = "" }) => (
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("about");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [projectFilter, setProjectFilter] = useState("All");
+  const scrollContainerRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const { current } = scrollContainerRef;
+      const scrollAmount = direction === "left" ? -400 : 400;
+      current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
 
   const sections = [
     { id: "about", label: "About", icon: User },
@@ -349,15 +361,22 @@ export default function Portfolio() {
                 {
                   title: "Bachelor's in Computer Science",
                   details: "University of Jaffna | 2023 - Present",
-                  desc: "Specializing in Cybersecurity, Network Defense, and System Architecture.",
-                  active: true
+                  desc: (
+                    <div className="space-y-2">
+                      <strong className="text-cyan-400 block font-mono text-lg">CGPA: 3.26/4.0 (Upto Semester 3)</strong>
+                      <span className="block text-sm text-gray-400">
+                        <strong className="text-gray-300">Key Courses:</strong> Computer Security & Cryptography, Data Structures & Algorithms, Computer Architecture, Advanced Computer Networks, AI, Information Systems Security
+                      </span>
+                    </div>
+                  ),
+                  active: true,
                 },
                 {
-                  title: "System Initialization (High School)",
-                  details: "2016 - 2018",
-                  desc: "Foundation in Mathematics and ICT protocols.",
-                  active: false
-                }
+                  title: "GCE Advanced Level",
+                  details: "DS Senanayake College | 2018 - 2020",
+                  desc: "Foundation in Mathematics and ICT Concepts.",
+                  active: false,
+                },
               ].map((edu, idx) => (
                 <motion.div
                   key={idx}
@@ -373,7 +392,7 @@ export default function Portfolio() {
                   <CyberCard className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6">
                     <h3 className="text-xl font-bold text-cyan-400 font-mono mb-2">{edu.title}</h3>
                     <p className="text-sm text-gray-500 font-mono mb-4 border-b border-gray-800 pb-2">{edu.details}</p>
-                    <p className="text-gray-400">{edu.desc}</p>
+                    <div className="text-gray-400">{edu.desc}</div>
                   </CyberCard>
                 </motion.div>
               ))}
@@ -442,10 +461,35 @@ export default function Portfolio() {
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-900/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="max-w-6xl mx-auto relative z-10">
+          <div className="max-w-7xl mx-auto relative z-10">
             <SectionTitle icon={Code}>Projects</SectionTitle>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            {/* Project Filter Controls */}
+
+            {/* Project Filter Controls */}
+            <div className="flex justify-center mb-12">
+              <div className="flex gap-4">
+                {["All", "Individual", "Group"].map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => setProjectFilter(filter)}
+                    className={`px-6 py-2 rounded-full font-mono text-sm transition-all duration-300 border ${projectFilter === filter
+                      ? "bg-cyan-500/20 border-cyan-500 text-cyan-400 shadow-[0_0_15px_rgba(0,243,255,0.3)]"
+                      : "bg-gray-900/50 border-gray-800 text-gray-500 hover:border-cyan-500/50 hover:text-cyan-300"
+                      }`}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <motion.div
+              layout
+              ref={scrollContainerRef}
+              className="flex overflow-x-auto gap-8 pb-4 px-4 snap-x snap-mandatory scrollbar-hide"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
               {[
                 {
                   title: "Lanka Blood Donate",
@@ -453,7 +497,8 @@ export default function Portfolio() {
                   tech: ["React", "PostgreSQL", "Ballerina"],
                   link: "https://github.com/PamudaUposath/iwb25-296-genalphaz",
                   image: "/pr1.png",
-                  status: "DEPLOYED"
+                  status: "DEPLOYED",
+                  category: "Group"
                 },
                 {
                   title: "Student Attendance System",
@@ -461,49 +506,87 @@ export default function Portfolio() {
                   tech: ["PHP", "MySQL", "AdminLTE"],
                   link: "https://github.com/JanaRv0/SAMS",
                   image: "/pr2.png",
-                  status: "MAINTENANCE"
+                  status: "DEPLOYED",
+                  category: "Group"
                 },
-              ].map((project, idx) => (
-                <CyberCard key={idx} className="group p-0 bg-gray-900/20 border-gray-800">
-                  <div className="relative h-48 overflow-hidden border-b border-gray-800">
-                    <div className="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition-colors z-10" />
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 text-xs font-mono text-cyan-400 border border-cyan-500/30 z-20">
-                      STATUS: {project.status}
+                {
+                  title: "Shieldro – Real-Time Website Security Analyzer",
+                  desc: "A Chrome extension that detects insecure HTTP, mixed content, phishing patterns, and missing security headers, mapping findings to OWASP Top 10 and visualizing risk through a modern security wheel. All analysis runs locally in the browser.",
+                  tech: ["Manifest V3", "JavaScript", "CSS"],
+                  link: "https://github.com/bhagyasandakelum/shieldro",
+                  image: "/pr3.png",
+                  status: "DEPLOYED",
+                  category: "Individual"
+                },
+              ]
+                .filter(project => projectFilter === "All" || project.category === projectFilter)
+                .map((project, idx) => (
+                  <CyberCard key={idx} className="w-[320px] md:w-[400px] h-[580px] snap-center group p-0 bg-gray-900/20 border-gray-800 flex flex-col shrink-0 overflow-hidden">
+                    <div className="relative h-56 overflow-hidden border-b border-gray-800 shrink-0">
+                      <div className="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition-colors z-10" />
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 text-xs font-mono text-cyan-400 border border-cyan-500/30 z-20">
+                        STATUS: {project.status}
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-cyan-400 transition-colors font-mono">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-400 mb-6 line-clamp-2">
-                      {project.desc}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((t, i) => (
-                        <span key={i} className="px-2 py-1 text-xs font-mono text-blue-300 bg-blue-900/20 border border-blue-900/50 rounded">
-                          {t}
+                    <div className="p-6 flex flex-col flex-grow h-full">
+                      <div className="flex justify-between items-start mb-3">
+                        <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors font-mono line-clamp-2 h-14">
+                          {project.title}
+                        </h3>
+                        <span className="text-[10px] px-2 py-1 rounded bg-blue-900/30 text-cyan-300 border border-blue-900/50 uppercase tracking-wider shrink-0 ml-2">
+                          {project.category}
                         </span>
-                      ))}
-                    </div>
+                      </div>
 
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest"
-                    >
-                      View Project <ExternalLink size={14} />
-                    </a>
-                  </div>
-                </CyberCard>
-              ))}
+                      <p className="text-gray-400 mb-6 line-clamp-4 text-sm flex-grow">
+                        {project.desc}
+                      </p>
+
+                      <div className="mt-auto">
+                        <div className="flex flex-wrap gap-2 mb-6 h-16 overflow-hidden content-start">
+                          {project.tech.map((t, i) => (
+                            <span key={i} className="px-2 py-1 text-xs font-mono text-blue-300 bg-blue-900/20 border border-blue-900/50 rounded">
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest"
+                        >
+                          View Project <ExternalLink size={14} />
+                        </a>
+                      </div>
+                    </div>
+                  </CyberCard>
+                ))}
+            </motion.div>
+
+            {/* Scroll Buttons - Centered Below */}
+            <div className="flex justify-center gap-6 mt-8">
+              <button
+                onClick={() => scroll("left")}
+                className="p-4 rounded-full border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-500 transition-all shadow-[0_0_10px_rgba(0,243,255,0.1)] hover:shadow-[0_0_20px_rgba(0,243,255,0.3)] group"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+              </button>
+              <button
+                onClick={() => scroll("right")}
+                className="p-4 rounded-full border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-500 transition-all shadow-[0_0_10px_rgba(0,243,255,0.1)] hover:shadow-[0_0_20px_rgba(0,243,255,0.3)] group"
+                aria-label="Scroll right"
+              >
+                <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </div>
         </section>

@@ -17,6 +17,8 @@ import {
   Database,
   Lock,
   Award,
+  Zap, // Added for skills
+  BookOpen,
 } from "lucide-react";
 
 // --- Matrix Rain Effect Component ---
@@ -32,13 +34,14 @@ const MatrixRain = () => {
     const drops = Array(columns).fill(1);
 
     const draw = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)"; // Increased opacity for better visibility
       ctx.fillRect(0, 0, width, height);
       ctx.fillStyle = "#00f3ff"; // Neon Cyan for Cyber look
       ctx.font = "15px monospace";
 
       for (let i = 0; i < drops.length; i++) {
-        const text = String.fromCharCode(Math.random() * 128);
+        // Binary Rain: 0s and 1s
+        const text = Math.random() > 0.5 ? "1" : "0";
         ctx.fillText(text, i * 20, drops[i] * 20);
 
         if (drops[i] * 20 > height && Math.random() > 0.975) {
@@ -99,11 +102,11 @@ export default function Portfolio() {
 
   const sections = [
     { id: "about", label: "About", icon: User },
-    { id: "education", label: "History", icon: Database }, // Renamed from Education to History (Cyber feel)
-    { id: "certificates", label: "Credentials", icon: Shield }, // Renamed from Certificates
-    { id: "projects", label: "Operations", icon: Terminal }, // Renamed from Projects
-    { id: "blog", label: "Intel", icon: FileText, external: "https://hash-cs.blogspot.com/" },
-    { id: "contact", label: "Comms", icon: Mail },
+    { id: "education", label: "Education", icon: BookOpen }, // Reverted to standard
+    { id: "certificates", label: "Certificates", icon: Award }, // Reverted
+    { id: "projects", label: "Projects", icon: Code }, // Reverted
+    { id: "blog", label: "Blog", icon: FileText, external: "https://hash-cs.blogspot.com/" },
+    { id: "contact", label: "Contact", icon: Mail },
   ];
 
   const scrollToSection = (id) => {
@@ -118,7 +121,7 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-gray-300 font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen bg-black text-gray-300 font-sans selection:bg-cyan-500/30 selection:text-cyan-200 bg-grid-pattern">
       <MatrixRain />
 
       {/* Navigation */}
@@ -141,8 +144,8 @@ export default function Portfolio() {
                   key={section.id}
                   onClick={() => scrollToSection(section.id)}
                   className={`px-4 py-2 rounded-lg font-mono text-sm transition-all duration-300 relative group ${activeSection === section.id
-                      ? "text-cyan-400"
-                      : "text-gray-400 hover:text-cyan-300"
+                    ? "text-cyan-400"
+                    : "text-gray-400 hover:text-cyan-300"
                     }`}
                 >
                   <span className="relative z-10">
@@ -184,8 +187,8 @@ export default function Portfolio() {
                     key={section.id}
                     onClick={() => scrollToSection(section.id)}
                     className={`w-full text-left px-3 py-3 rounded-lg font-mono transition-colors ${activeSection === section.id
-                        ? "bg-blue-900/30 text-cyan-400 border border-cyan-500/30"
-                        : "text-gray-400 hover:bg-blue-900/10"
+                      ? "bg-blue-900/30 text-cyan-400 border border-cyan-500/30"
+                      : "text-gray-400 hover:bg-blue-900/10"
                       }`}
                   >
                     <span className="opacity-50 mr-2">{">"}</span>
@@ -212,25 +215,35 @@ export default function Portfolio() {
           <div className="max-w-6xl mx-auto w-full z-10">
             <div className="grid md:grid-cols-2 gap-12 items-center">
 
-              {/* Profile Image with Cyber Border */}
+              {/* Profile Image with Circular Cyber Border */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
                 className="flex justify-center order-2 md:order-1"
               >
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 rounded-lg blur opacity-40 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                  <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-lg bg-black p-1">
-                    <div className="absolute top-0 left-0 w-full h-full border border-cyan-500/30 rounded-lg z-20 pointer-events-none"></div>
-                    <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-cyan-500 z-20"></div>
-                    <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-cyan-500 z-20"></div>
+                <div className="relative group w-72 h-72 md:w-80 md:h-80">
+                  {/* Rotating decorative rings */}
+                  <div className="absolute inset-0 rounded-full border-2 border-cyan-500/30 border-dashed animate-[spin_10s_linear_infinite]" />
+                  <div className="absolute -inset-4 rounded-full border border-blue-600/20 animate-[spin_15s_linear_infinite_reverse]" />
+
+                  {/* Main image container */}
+                  <div className="absolute inset-0 rounded-full bg-black p-1 overflow-hidden border-2 border-cyan-500 shadow-[0_0_30px_rgba(0,243,255,0.2)]">
                     <img
                       src="/image.png"
                       alt="Profile"
-                      className="w-full h-full object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-500"
+                      className="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500"
                     />
                   </div>
+
+                  {/* Floating Tech Badge */}
+                  <motion.div
+                    animate={{ y: [-5, 5, -5] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="absolute -bottom-6 right-10 bg-black/90 border border-cyan-500 px-4 py-1 rounded-full text-cyan-400 text-xs font-mono shadow-lg"
+                  >
+                    STATUS: ACTIVE
+                  </motion.div>
                 </div>
               </motion.div>
 
@@ -278,8 +291,8 @@ export default function Portfolio() {
                     onClick={() => scrollToSection("contact")}
                     className="px-8 py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono rounded hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center gap-2 group"
                   >
-                    <Terminal size={18} />
-                    <span>Initialize_Contact()</span>
+                    <Mail size={18} />
+                    <span>Contact Me</span>
                   </button>
                 </motion.div>
               </div>
@@ -287,10 +300,32 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* EDUCATION (RENAMED TO HISTORY FOR CYBER THEME) */}
+        {/* SKILLS TICKER (Visual Filler) */}
+        <div className="py-10 bg-blue-900/10 border-y border-blue-900/30 overflow-hidden relative">
+          <div className="absolute inset-0 bg-blue-900/5 backdrop-blur-sm z-0"></div>
+          <div className="flex animate-[scroll_20s_linear_infinite] gap-12 whitespace-nowrap relative z-10 items-center">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex gap-12 text-cyan-500/50 font-mono text-xl font-bold uppercase tracking-widest">
+                <span>Cybersecurity</span> <Zap size={16} className="text-blue-500" />
+                <span>Network Defense</span> <Zap size={16} className="text-blue-500" />
+                <span>React</span> <Zap size={16} className="text-blue-500" />
+                <span>Penetration Testing</span> <Zap size={16} className="text-blue-500" />
+                <span>Cryptography</span> <Zap size={16} className="text-blue-500" />
+                <span>Python</span> <Zap size={16} className="text-blue-500" />
+                <span>Secure Coding</span> <Zap size={16} className="text-blue-500" />
+                <span>System Architecture</span> <Zap size={16} className="text-blue-500" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* EDUCATION */}
         <section id="education" className="min-h-screen py-20 px-4 relative">
-          <div className="max-w-5xl mx-auto">
-            <SectionTitle icon={Database}>System_History</SectionTitle>
+          {/* Background Filler */}
+          <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-5xl mx-auto z-10 relative">
+            <SectionTitle icon={BookOpen}>Education</SectionTitle>
 
             <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-blue-900 before:to-transparent">
               {[
@@ -329,10 +364,13 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* SKILLS/CERTIFICATES (RENAMED TO CREDENTIALS) */}
-        <section id="certificates" className="min-h-screen py-20 px-4 bg-black/50">
-          <div className="max-w-6xl mx-auto">
-            <SectionTitle icon={Shield}>Security_Credentials</SectionTitle>
+        {/* CERTIFICATES */}
+        <section id="certificates" className="min-h-screen py-20 px-4 bg-black/50 relative">
+          {/* Background Filler */}
+          <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-blue-900/10 to-transparent pointer-events-none" />
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            <SectionTitle icon={Award}>Certificates</SectionTitle>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
@@ -382,10 +420,13 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* PROJECTS (RENAMED TO OPERATIONS) */}
-        <section id="projects" className="min-h-screen py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <SectionTitle icon={Terminal}>Active_Operations</SectionTitle>
+        {/* PROJECTS */}
+        <section id="projects" className="min-h-screen py-20 px-4 relative">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-900/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            <SectionTitle icon={Code}>Projects</SectionTitle>
 
             <div className="grid md:grid-cols-2 gap-8">
               {[
@@ -441,7 +482,7 @@ export default function Portfolio() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest"
                     >
-                      Execute Protocol <ExternalLink size={14} />
+                      View Project <ExternalLink size={14} />
                     </a>
                   </div>
                 </CyberCard>
@@ -461,10 +502,10 @@ export default function Portfolio() {
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-pulse" />
 
-              <h2 className="text-4xl font-bold text-white mb-6">Ready to Secure Your Systems?</h2>
+              <h2 className="text-4xl font-bold text-white mb-6">Let's Connect</h2>
               <p className="text-gray-400 mb-8 max-w-xl mx-auto">
                 Looking for a dedicated cybersecurity engineer or need help with a project?
-                My communication channels are open.
+                Feel free to reach out.
               </p>
 
               <div className="flex flex-col md:flex-row justify-center items-center gap-6">
@@ -473,7 +514,7 @@ export default function Portfolio() {
                   className="px-8 py-4 bg-cyan-600 text-white rounded font-bold hover:bg-cyan-500 transition-colors shadow-[0_0_20px_rgba(0,149,255,0.3)] flex items-center gap-2"
                 >
                   <Mail size={20} />
-                  Start Transmission
+                  Send Email
                 </a>
                 <div className="flex gap-4">
                   <a href="https://github.com/bhagyasandakelum" className="text-gray-400 hover:text-cyan-400 transition-colors"><Github size={24} /></a>

@@ -268,7 +268,7 @@ export default function Portfolio() {
                 >
                   <p className="font-mono text-cyan-400 mb-4 inline-flex items-center gap-2">
                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    System Online
+                    Available for Opportunities
                   </p>
                   <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight">
                     Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Bhagya Sandakelum</span>

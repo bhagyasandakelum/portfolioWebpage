@@ -21,6 +21,8 @@ import {
   BookOpen,
   ChevronLeft,
   ChevronRight,
+  Play,
+  Download
 } from "lucide-react";
 
 // --- Matrix Rain Effect Component ---
@@ -492,10 +494,20 @@ export default function Portfolio() {
             >
               {[
                 {
+                  title: "WalletX - Master Your Money",
+                  desc: "A comprehensive personal finance manager that tracks daily expenses, visualizes spending patterns, and helps users stay within budget. Developed as a high-performance individual project with a focus on premium UI and data security.",
+                  tech: ["React Native", "SQLite", "Local Storage"],
+                  github: "https://github.com/bhagyasandakelum/walletx",
+                  playStore: "https://play.google.com/store/apps/details?id=com.bhagyaslive.walletx", // Replace with your actual Play Store link
+                  image: "/pr4.png",
+                  status: "LIVE",
+                  category: "Individual"
+                },
+                {
                   title: "Lanka Blood Donate",
                   desc: "Connects donors with blood banks. Features real-time requests and eligibility algorithms.",
                   tech: ["React", "PostgreSQL", "Ballerina"],
-                  link: "https://github.com/PamudaUposath/iwb25-296-genalphaz",
+                  github: "https://github.com/PamudaUposath/iwb25-296-genalphaz",
                   image: "/pr1.png",
                   status: "DEPLOYED",
                   category: "Group"
@@ -504,7 +516,7 @@ export default function Portfolio() {
                   title: "Student Attendance System",
                   desc: "Role-based dashboards for administrators using dynamic session tracking.",
                   tech: ["PHP", "MySQL", "AdminLTE"],
-                  link: "https://github.com/JanaRv0/SAMS",
+                  github: "https://github.com/JanaRv0/SAMS",
                   image: "/pr2.png",
                   status: "DEPLOYED",
                   category: "Group"
@@ -513,7 +525,7 @@ export default function Portfolio() {
                   title: "Shieldro – Real-Time Website Security Analyzer",
                   desc: "A Chrome extension that detects insecure HTTP, mixed content, phishing patterns, and missing security headers, mapping findings to OWASP Top 10 and visualizing risk through a modern security wheel. All analysis runs locally in the browser.",
                   tech: ["Manifest V3", "JavaScript", "CSS"],
-                  link: "https://github.com/bhagyasandakelum/shieldro",
+                  github: "https://github.com/bhagyasandakelum/shieldro",
                   image: "/pr3.png",
                   status: "DEPLOYED",
                   category: "Individual"
@@ -557,14 +569,42 @@ export default function Portfolio() {
                           ))}
                         </div>
 
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest"
-                        >
-                          View Project <ExternalLink size={14} />
-                        </a>
+                        <div className="flex gap-4">
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-cyan-400 transition-colors uppercase tracking-widest border border-gray-800 hover:border-cyan-500/50 px-3 py-2 rounded-lg bg-black/50"
+                              title="View on GitHub"
+                            >
+                              <Github size={18} />
+                              <span className="hidden sm:inline">GitHub</span>
+                            </a>
+                          )}
+                          {project.playStore && (
+                            <a
+                              href={project.playStore}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest border border-cyan-500/30 hover:border-cyan-500 px-3 py-2 rounded-lg bg-cyan-900/10 shadow-[0_0_10px_rgba(0,243,255,0.1)]"
+                              title="Get it on Play Store"
+                            >
+                              <Play size={18} fill="currentColor" />
+                              <span className="hidden sm:inline">Play Store</span>
+                            </a>
+                          )}
+                          {!project.github && !project.playStore && project.link && (
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest"
+                            >
+                              View Project <ExternalLink size={14} />
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </CyberCard>

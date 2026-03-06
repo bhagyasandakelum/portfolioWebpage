@@ -309,7 +309,7 @@ export default function Portfolio() {
                       <span>Contact Me</span>
                     </button>
                     <a
-                      href="#" // Replace with your Google Drive PDF link
+                      href="https://drive.google.com/file/d/1Md1bVV6XdaCQzzZLLza8BL4ylpVJLjW8/view?usp=sharing" // Replace with your Google Drive PDF link
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-8 py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono rounded hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center gap-2 group"

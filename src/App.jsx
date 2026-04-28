@@ -115,10 +115,11 @@ export default function Portfolio() {
   };
 
   const sections = [
-    { id: "about", label: "About", icon: User },
-    { id: "education", label: "Education", icon: BookOpen }, // Reverted to standard
-    { id: "certificates", label: "Certificates", icon: Award }, // Reverted
-    { id: "projects", label: "Projects", icon: Code }, // Reverted
+    { id: "about", label: "Home", icon: User },
+    //{ id: "skills", label: "Skills", icon: Zap },
+    { id: "projects", label: "Projects", icon: Code },
+    { id: "certificates", label: "Certificates", icon: Award },
+    { id: "leadership", label: "Leadership & Volunteer", icon: Globe },
     { id: "blog", label: "Blog", icon: FileText, external: "https://hash-cs.blogspot.com/" },
     { id: "contact", label: "Contact", icon: Mail },
   ];
@@ -324,8 +325,13 @@ export default function Portfolio() {
           </div>
         </section>
 
+
+
+
+
+
         {/* SKILLS TICKER (Visual Filler) */}
-        <div className="py-10 bg-blue-900/10 border-y border-blue-900/30 overflow-hidden relative">
+        <section id="skills" className="py-10 bg-blue-900/10 border-y border-blue-900/30 overflow-hidden relative">
           <div className="absolute inset-0 bg-blue-900/5 backdrop-blur-sm z-0"></div>
           <div className="flex animate-[scroll_20s_linear_infinite] gap-12 whitespace-nowrap relative z-10 items-center">
             {[...Array(2)].map((_, i) => (
@@ -347,114 +353,6 @@ export default function Portfolio() {
                 <span>SQLite</span> <Zap size={16} className="text-blue-500" />
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* EDUCATION */}
-        <section id="education" className="min-h-screen py-20 px-4 relative">
-          {/* Background Filler */}
-          <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="max-w-5xl mx-auto z-10 relative">
-            <SectionTitle icon={BookOpen}>Education</SectionTitle>
-
-            <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-blue-900 before:to-transparent">
-              {[
-                {
-                  title: "Bachelor's in Computer Science",
-                  details: "University of Jaffna | 2023 - Present",
-                  desc: (
-                    <div className="space-y-2">
-                      <strong className="text-cyan-400 block font-mono text-lg">CGPA: 3.26/4.0 (Upto Semester 3)</strong>
-                      <span className="block text-sm text-gray-400">
-                        <strong className="text-gray-300">Key Courses:</strong> Computer Security & Cryptography, Data Structures & Algorithms, Computer Architecture, Advanced Computer Networks, AI, Information Systems Security
-                      </span>
-                    </div>
-                  ),
-                  active: true,
-                },
-                {
-                  title: "GCE Advanced Level",
-                  details: "DS Senanayake College | 2018 - 2020",
-                  desc: "Foundation in Mathematics and ICT Concepts.",
-                  active: false,
-                },
-              ].map((edu, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
-                >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyan-500 bg-black shadow-[0_0_10px_rgba(0,243,255,0.4)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    {edu.active ? <div className="w-3 h-3 bg-cyan-400 rounded-full animate-ping" /> : <div className="w-3 h-3 bg-gray-600 rounded-full" />}
-                  </div>
-
-                  <CyberCard className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6">
-                    <h3 className="text-xl font-bold text-cyan-400 font-mono mb-2">{edu.title}</h3>
-                    <p className="text-sm text-gray-500 font-mono mb-4 border-b border-gray-800 pb-2">{edu.details}</p>
-                    <div className="text-gray-400">{edu.desc}</div>
-                  </CyberCard>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CERTIFICATES */}
-        <section id="certificates" className="min-h-screen py-20 px-4 bg-black/50 relative">
-          {/* Background Filler */}
-          <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-blue-900/10 to-transparent pointer-events-none" />
-
-          <div className="max-w-6xl mx-auto relative z-10">
-            <SectionTitle icon={Award}>Certificates</SectionTitle>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                {
-                  name: "Postman API Expert",
-                  issuer: "Postman",
-                  id: "API-SEC-01",
-                  icon: Globe
-                },
-                {
-                  name: "Data Science Foundation",
-                  issuer: "Great Learning",
-                  id: "DATA-SCI-02",
-                  icon: Database
-                },
-                {
-                  name: "SEO Optimization",
-                  issuer: "Hubspot Academy",
-                  id: "WEB-OPT-03",
-                  icon: Code
-                },
-              ].map((cert, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.1 }}
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="h-full bg-gray-900/30 border border-gray-800 hover:border-cyan-500/50 p-6 rounded-xl transition-all duration-300 group relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                      <cert.icon size={80} />
-                    </div>
-                    <div className="p-2 w-12 h-12 bg-blue-900/20 rounded-lg flex items-center justify-center mb-4 text-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,243,255,0.3)] transition-shadow">
-                      <Award size={24} />
-                    </div>
-                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">{cert.name}</h3>
-                    <p className="text-sm text-gray-500 mb-4">{cert.issuer}</p>
-                    <div className="flex justify-between items-center text-xs font-mono text-gray-600 border-t border-gray-800 pt-4">
-                      <span>ID: {cert.id}</span>
-                      <span className="text-cyan-600 group-hover:text-cyan-400">VERIFIED</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -631,6 +529,160 @@ export default function Portfolio() {
           </div>
         </section>
 
+        {/* CERTIFICATES */}
+        <section id="certificates" className="min-h-screen py-20 px-4 bg-black/50 relative">
+          {/* Background Filler */}
+          <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-blue-900/10 to-transparent pointer-events-none" />
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            <SectionTitle icon={Award}>Certificates</SectionTitle>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  name: "Postman API Expert",
+                  issuer: "Postman",
+                  id: "API-SEC-01",
+                  icon: Globe
+                },
+                {
+                  name: "Data Science Foundation",
+                  issuer: "Great Learning",
+                  id: "DATA-SCI-02",
+                  icon: Database
+                },
+                {
+                  name: "SEO Optimization",
+                  issuer: "Hubspot Academy",
+                  id: "WEB-OPT-03",
+                  icon: Code
+                },
+              ].map((cert, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: idx * 0.1 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="h-full bg-gray-900/30 border border-gray-800 hover:border-cyan-500/50 p-6 rounded-xl transition-all duration-300 group relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <cert.icon size={80} />
+                    </div>
+                    <div className="p-2 w-12 h-12 bg-blue-900/20 rounded-lg flex items-center justify-center mb-4 text-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,243,255,0.3)] transition-shadow">
+                      <Award size={24} />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">{cert.name}</h3>
+                    <p className="text-sm text-gray-500 mb-4">{cert.issuer}</p>
+                    <div className="flex justify-between items-center text-xs font-mono text-gray-600 border-t border-gray-800 pt-4">
+                      <span>ID: {cert.id}</span>
+                      <span className="text-cyan-600 group-hover:text-cyan-400">VERIFIED</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* LEADERSHIP & VOLUNTEER */}
+        <section id="leadership" className="min-h-screen py-20 px-4 relative">
+          <div className="absolute top-1/3 left-0 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            <SectionTitle icon={Globe}>Leadership & Volunteer</SectionTitle>
+
+            <div className="space-y-16 mt-12">
+              {/* Leadership Section */}
+              <div>
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="p-3 bg-cyan-900/30 rounded-lg border border-cyan-500/30">
+                    <Shield className="text-cyan-400 w-6 h-6" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white font-mono">Leadership</h3>
+                  <div className="h-px flex-grow bg-gradient-to-r from-cyan-500/30 to-transparent ml-4"></div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Item 1 */}
+                  <CyberCard className="p-8 border-t-4 border-t-cyan-500 hover:-translate-y-2 transition-transform duration-300 group">
+                    <div className="flex justify-between items-start mb-6">
+                      <h4 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">AWS Cloud Club</h4>
+                      <span className="px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30 shrink-0 ml-2">Current</span>
+                    </div>
+                    <p className="text-gray-400 font-mono text-sm">University of Jaffna</p>
+                    <div className="mt-4 p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
+                      <p className="text-cyan-400 font-bold flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div> Media and Communication Lead</p>
+                    </div>
+                  </CyberCard>
+
+                  {/* Item 2 */}
+                  <CyberCard className="p-8 border-t-4 border-t-cyan-500 hover:-translate-y-2 transition-transform duration-300 group">
+                    <div className="flex justify-between items-start mb-6">
+                      <h4 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE SLSAC</h4>
+                      <span className="px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30 shrink-0 ml-2">Current</span>
+                    </div>
+                    <div className="mt-4 p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
+                      <p className="text-cyan-400 font-bold flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div> Volunteer Management Coordinator</p>
+                    </div>
+                  </CyberCard>
+
+                  {/* Item 3 */}
+                  <CyberCard className="p-8 border-t-4 border-t-cyan-500 md:col-span-2 hover:-translate-y-2 transition-transform duration-300 group">
+                    <div className="flex justify-between items-start mb-6">
+                      <h4 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE Student Branch</h4>
+                      <span className="px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-mono rounded-full border border-blue-500/30 shrink-0 ml-2">2024 - 2026</span>
+                    </div>
+                    <p className="text-gray-400 font-mono text-sm mb-4">University of Jaffna</p>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="p-4 bg-black/50 rounded-lg border border-cyan-500/30 relative overflow-hidden">
+                        <div className="absolute left-0 top-0 w-1 h-full bg-cyan-500"></div>
+                        <p className="text-cyan-400 font-bold">Chairperson</p>
+                        <p className="text-gray-500 text-xs font-mono mt-1">2025 - 2026</p>
+                      </div>
+                      <div className="p-4 bg-black/50 rounded-lg border border-gray-800 relative overflow-hidden">
+                        <div className="absolute left-0 top-0 w-1 h-full bg-gray-600"></div>
+                        <p className="text-gray-300 font-bold">Design Team Member</p>
+                        <p className="text-gray-500 text-xs font-mono mt-1">2024 - 2025</p>
+                      </div>
+                    </div>
+                  </CyberCard>
+                </div>
+              </div>
+
+              {/* Volunteer Section */}
+              <div className="pt-8">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="p-3 bg-blue-900/30 rounded-lg border border-blue-500/30">
+                    <User className="text-blue-400 w-6 h-6" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white font-mono">Volunteer</h3>
+                  <div className="h-px flex-grow bg-gradient-to-r from-blue-500/30 to-transparent ml-4"></div>
+                </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { event: "YarlInsight 2.0", role: "Event Chair", org: "[Organization]" },
+                    { event: "JamborIEEE 2025", role: "Vice Chair - Design", org: "[Organization]" },
+                    { event: "TechFest", role: "Program Team Member", org: "[Organization]" },
+                    { event: "IEEEXtreme 18.0 & YarlXtreme", role: "Public Visibility Team Lead", org: "[Organization]" },
+                    { event: "YarlInsight 1.0", role: "Public Visibility Team Member", org: "[Organization]" }
+                  ].map((vol, idx) => (
+                    <CyberCard key={idx} className="p-6 border border-gray-800 hover:border-blue-500/50 hover:bg-blue-900/10 transition-all duration-300 flex flex-col h-full group">
+                      <div className="mb-4">
+                        <p className="text-blue-400 font-mono text-sm mb-2 opacity-80 group-hover:opacity-100">{vol.role}</p>
+                        <h4 className="text-lg font-bold text-white leading-tight group-hover:text-blue-300 transition-colors">{vol.event}</h4>
+                      </div>
+                      <div className="mt-auto pt-4 border-t border-gray-800">
+                        <p className="text-gray-500 text-xs font-mono uppercase tracking-wider">{vol.org}</p>
+                      </div>
+                    </CyberCard>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         {/* CONTACT */}
         <section id="contact" className="min-h-[70vh] flex items-center py-20 px-4 relative">
           <div className="max-w-4xl mx-auto w-full text-center">
@@ -664,6 +716,12 @@ export default function Portfolio() {
             </motion.div>
           </div>
         </section>
+
+
+
+
+
+
 
         {/* FOOTER */}
         <footer className="py-8 bg-black border-t border-blue-900/20 text-center relative overflow-hidden">

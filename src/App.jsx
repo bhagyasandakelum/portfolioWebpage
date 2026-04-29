@@ -119,8 +119,8 @@ export default function Portfolio() {
     //{ id: "skills", label: "Skills", icon: Zap },
     { id: "projects", label: "Projects", icon: Code },
     { id: "certificates", label: "Certificates", icon: Award },
-    { id: "leadership", label: "Leadership & Volunteer", icon: Globe },
-    { id: "blog", label: "Blog", icon: FileText, external: "https://hash-cs.blogspot.com/" },
+    { id: "leadership", label: "Leadership & Volunteering", icon: Globe },
+    { id: "blog", label: "Blog", icon: FileText, external: "https://hashcs.vercel.app" },
     { id: "contact", label: "Contact", icon: Mail },
   ];
 
@@ -431,7 +431,7 @@ export default function Portfolio() {
               ]
                 .filter(project => projectFilter === "All" || project.category === projectFilter)
                 .map((project, idx) => (
-                  <CyberCard key={idx} className="w-[320px] md:w-[400px] h-[580px] snap-center group p-0 bg-gray-900/20 border-gray-800 flex flex-col shrink-0 overflow-hidden">
+                  <CyberCard key={idx} className="w-[320px] md:w-[400px] h-auto min-h-[580px] snap-center group p-0 bg-gray-900/20 border-gray-800 flex flex-col shrink-0 overflow-hidden">
                     <div className="relative h-56 overflow-hidden border-b border-gray-800 shrink-0">
                       <div className="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition-colors z-10" />
                       <img
@@ -444,7 +444,7 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    <div className="p-6 flex flex-col flex-grow h-full">
+                    <div className="p-6 flex flex-col flex-grow">
                       <div className="flex justify-between items-start mb-3">
                         <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors font-mono line-clamp-2 h-14">
                           {project.title}
@@ -458,7 +458,7 @@ export default function Portfolio() {
                         {project.desc}
                       </p>
 
-                      <div className="mt-auto">
+                      <div className="mt-auto pt-4">
                         <div className="flex flex-wrap gap-2 mb-6 h-16 overflow-hidden content-start">
                           {project.tech.map((t, i) => (
                             <span key={i} className="px-2 py-1 text-xs font-mono text-blue-300 bg-blue-900/20 border border-blue-900/50 rounded">
@@ -467,17 +467,17 @@ export default function Portfolio() {
                           ))}
                         </div>
 
-                        <div className="flex gap-4">
+                        <div className="flex flex-wrap gap-3">
                           {project.github && (
                             <a
                               href={project.github}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-cyan-400 transition-colors uppercase tracking-widest border border-gray-800 hover:border-cyan-500/50 px-3 py-2 rounded-lg bg-black/50"
+                              className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-gray-400 hover:text-cyan-400 transition-colors uppercase tracking-widest border border-gray-800 hover:border-cyan-500/50 px-3 py-2 rounded-lg bg-black/50"
                               title="View on GitHub"
                             >
-                              <Github size={18} />
-                              <span className="hidden sm:inline">GitHub</span>
+                              <Github size={18} className="shrink-0" />
+                              <span>GitHub</span>
                             </a>
                           )}
                           {project.playStore && (
@@ -485,11 +485,11 @@ export default function Portfolio() {
                               href={project.playStore}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest border border-cyan-500/30 hover:border-cyan-500 px-3 py-2 rounded-lg bg-cyan-900/10 shadow-[0_0_10px_rgba(0,243,255,0.1)]"
+                              className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest border border-cyan-500/30 hover:border-cyan-500 px-3 py-2 rounded-lg bg-cyan-900/10 shadow-[0_0_10px_rgba(0,243,255,0.1)]"
                               title="Get it on Play Store"
                             >
-                              <Play size={18} fill="currentColor" />
-                              <span className="hidden sm:inline">Play Store</span>
+                              <Play size={18} fill="currentColor" className="shrink-0" />
+                              <span>Play Store</span>
                             </a>
                           )}
                           {!project.github && !project.playStore && project.link && (
@@ -497,9 +497,9 @@ export default function Portfolio() {
                               href={project.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest"
+                              className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest"
                             >
-                              View Project <ExternalLink size={14} />
+                              View Project <ExternalLink size={14} className="shrink-0" />
                             </a>
                           )}
                         </div>

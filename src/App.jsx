@@ -607,10 +607,10 @@ export default function Portfolio() {
                   {/* Item 1 */}
                   <CyberCard className="p-8 border-t-4 border-t-cyan-500 hover:-translate-y-2 transition-transform duration-300 group">
                     <div className="flex justify-between items-start mb-6">
-                      <h4 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">AWS Cloud Club</h4>
+                      <h4 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">AWS Cloud Club - UOJ</h4>
                       <span className="px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30 shrink-0 ml-2">Current</span>
                     </div>
-                    <p className="text-gray-400 font-mono text-sm">University of Jaffna</p>
+
                     <div className="mt-4 p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
                       <p className="text-cyan-400 font-bold flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div> Media and Communication Lead</p>
                     </div>
@@ -630,10 +630,9 @@ export default function Portfolio() {
                   {/* Item 3 */}
                   <CyberCard className="p-8 border-t-4 border-t-cyan-500 md:col-span-2 hover:-translate-y-2 transition-transform duration-300 group">
                     <div className="flex justify-between items-start mb-6">
-                      <h4 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE Student Branch</h4>
+                      <h4 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE Student Branch - University of Jaffna</h4>
                       <span className="px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-mono rounded-full border border-blue-500/30 shrink-0 ml-2">2024 - 2026</span>
                     </div>
-                    <p className="text-gray-400 font-mono text-sm mb-4">University of Jaffna</p>
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="p-4 bg-black/50 rounded-lg border border-cyan-500/30 relative overflow-hidden">
                         <div className="absolute left-0 top-0 w-1 h-full bg-cyan-500"></div>
@@ -662,11 +661,11 @@ export default function Portfolio() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {[
-                    { event: "YarlInsight 2.0", role: "Event Chair", org: "[Organization]" },
-                    { event: "JamborIEEE 2025", role: "Vice Chair - Design", org: "[Organization]" },
-                    { event: "TechFest", role: "Program Team Member", org: "[Organization]" },
-                    { event: "IEEEXtreme 18.0 & YarlXtreme", role: "Public Visibility Team Lead", org: "[Organization]" },
-                    { event: "YarlInsight 1.0", role: "Public Visibility Team Member", org: "[Organization]" }
+                    { event: "YarlInsight 2.0", role: "Event Chair", org: "IEEE-SB-UoJ" },
+                    { event: "JamborIEEE 2025", role: "Vice Chair - Design", org: "IEEE SLSAC" },
+                    { event: "TechFest", role: "Program Team Member", org: "IEEE Techverse Sri Lanka" },
+                    { event: "IEEEXtreme 18.0 & YarlXtreme", role: "Public Visibility Team Lead", org: "IEEE-SB-UoJ" },
+                    { event: "YarlInsight 1.0", role: "Public Visibility Team Member", org: "IEEE-SB-UoJ" }
                   ].map((vol, idx) => (
                     <CyberCard key={idx} className="p-6 border border-gray-800 hover:border-blue-500/50 hover:bg-blue-900/10 transition-all duration-300 flex flex-col h-full group">
                       <div className="mb-4">
@@ -727,7 +726,7 @@ export default function Portfolio() {
         <footer className="py-8 bg-black border-t border-blue-900/20 text-center relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4">
             <p className="text-gray-600 font-mono text-sm">
-              © 2025 bhagyaslive_ // <span className="text-cyan-500">System Secure</span>
+              © 2026 bhagyaslive <span className="text-cyan-500">System Secure</span>
             </p>
           </div>
         </footer>

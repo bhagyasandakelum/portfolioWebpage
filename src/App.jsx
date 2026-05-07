@@ -121,9 +121,9 @@ export default function Portfolio() {
   const sections = [
     { id: "about", label: "Home", icon: User },
     { id: "projects", label: "Projects", icon: Code },
-    { id: "education", label: "Education", icon: BookOpen },
+    //{ id: "education", label: "Education", icon: BookOpen },
     { id: "certificates", label: "Certificates", icon: Award },
-    { id: "leadership", label: "Journey", icon: Globe },
+    { id: "leadership", label: "Leadership & Volunteering", icon: Globe },
     { id: "blog", label: "Blog", icon: FileText, external: "https://hashcs.vercel.app" },
     { id: "contact", label: "Contact", icon: Mail },
   ];
@@ -153,7 +153,7 @@ export default function Portfolio() {
               className="text-xl md:text-2xl font-bold font-mono text-cyan-400 flex items-center gap-2"
             >
               <Terminal size={20} />
-              bhagyaslive_
+              bhagyaslive
             </motion.div>
 
             {/* Desktop Nav */}
@@ -227,9 +227,8 @@ export default function Portfolio() {
             key={section.id}
             onClick={() => scrollToSection(section.id)}
             style={{ writingMode: 'vertical-rl' }}
-            className={`text-xs font-mono uppercase tracking-widest transition-all duration-300 hover:-translate-x-1 rotate-180 py-2 ${
-              activeSection === section.id ? "text-cyan-400 font-bold drop-shadow-[0_0_8px_rgba(0,243,255,0.8)]" : "text-gray-600 hover:text-cyan-300"
-            }`}
+            className={`text-xs font-mono uppercase tracking-widest transition-all duration-300 hover:-translate-x-1 rotate-180 py-2 ${activeSection === section.id ? "text-cyan-400 font-bold drop-shadow-[0_0_8px_rgba(0,243,255,0.8)]" : "text-gray-600 hover:text-cyan-300"
+              }`}
           >
             {section.label}
           </button>
@@ -411,167 +410,184 @@ export default function Portfolio() {
             <motion.div
               layout
               ref={scrollContainerRef}
-              className="flex overflow-x-auto gap-8 pb-4 px-4 snap-x snap-mandatory scrollbar-hide"
+              className={`flex overflow-x-auto gap-8 pb-4 px-4 snap-x snap-mandatory scrollbar-hide ${projectFilter === "Open Source" ? "justify-center items-center overflow-hidden" : ""}`}
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
-              {[
-                {
-                  title: "WalletX - Master Your Money",
-                  desc: "A comprehensive personal finance manager that tracks daily expenses, visualizes spending patterns, and helps users stay within budget. Developed as a high-performance individual project with a focus on premium UI and data security.",
-                  tech: ["React Native", "SQLite", "Local Storage"],
-                  github: "https://github.com/bhagyasandakelum/walletx",
-                  playStore: "https://play.google.com/store/apps/details?id=com.bhagyaslive.walletx", // Replace with your actual Play Store link
-                  image: "/pr4.png",
-                  status: "LIVE",
-                  category: "Individual"
-                },
-                {
-                  title: "Lanka Blood Donate",
-                  desc: "Connects donors with blood banks. Features real-time requests and eligibility algorithms.",
-                  tech: ["React", "PostgreSQL", "Ballerina"],
-                  github: "https://github.com/PamudaUposath/iwb25-296-genalphaz",
-                  image: "/pr1.png",
-                  status: "DEPLOYED",
-                  category: "Group"
-                },
-                {
-                  title: "Student Attendance System",
-                  desc: "Role-based dashboards for administrators using dynamic session tracking.",
-                  tech: ["PHP", "MySQL", "AdminLTE"],
-                  github: "https://github.com/JanaRv0/SAMS",
-                  image: "/pr2.png",
-                  status: "DEPLOYED",
-                  category: "Group"
-                },
-                {
-                  title: "Shieldro – Real-Time Website Security Analyzer",
-                  desc: "A Chrome extension that detects insecure HTTP, mixed content, phishing patterns, and missing security headers, mapping findings to OWASP Top 10 and visualizing risk through a modern security wheel. All analysis runs locally in the browser.",
-                  tech: ["Manifest V3", "JavaScript", "CSS"],
-                  github: "https://github.com/bhagyasandakelum/shieldro",
-                  image: "/pr3.png",
-                  status: "DEPLOYED",
-                  category: "Individual"
-                },
-                {
-                  title: "React Documentation (Open Source)",
-                  desc: "Contributed to the core React documentation by fixing typos, improving examples, and translating pages to support the global developer community.",
-                  tech: ["Markdown", "React", "Git"],
-                  github: "https://github.com/reactjs/react.dev",
-                  image: "/pr1.png",
-                  status: "MERGED",
-                  category: "Open Source",
-                  badges: [
-                    { name: "Top Contributor", link: "https://github.com/reactjs/react.dev" }
-                  ]
-                },
-                {
-                  title: "Next.js Examples (Open Source)",
-                  desc: "Added new boilerplate examples for implementing secure authentication patterns using standard Web APIs inside Next.js 14 App Router.",
-                  tech: ["Next.js", "TypeScript"],
-                  github: "https://github.com/vercel/next.js",
-                  image: "/pr2.png",
-                  status: "MERGED",
-                  category: "Open Source",
-                  badges: [
-                    { name: "Auth Contributor", link: "https://github.com/vercel/next.js" }
-                  ]
-                },
-              ]
-                .filter(project => projectFilter === "All" || project.category === projectFilter)
-                .map((project, idx) => (
-                  <CyberCard key={idx} className="w-[320px] md:w-[400px] h-auto min-h-[580px] snap-center group p-0 bg-gray-900/20 border-gray-800 flex flex-col shrink-0 overflow-hidden">
-                    <div className="relative h-56 overflow-hidden border-b border-gray-800 shrink-0">
-                      <div className="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition-colors z-10" />
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                      <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 text-xs font-mono text-cyan-400 border border-cyan-500/30 z-20">
-                        STATUS: {project.status}
-                      </div>
-                    </div>
-
-                    <div className="p-6 flex flex-col flex-grow">
-                      <div className="flex justify-between items-start mb-3">
-                        <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors font-mono line-clamp-2 h-14">
-                          {project.title}
-                        </h3>
-                        <span className="text-[10px] px-2 py-1 rounded bg-blue-900/30 text-cyan-300 border border-blue-900/50 uppercase tracking-wider shrink-0 ml-2">
-                          {project.category}
-                        </span>
-                      </div>
-
-                      <p className="text-gray-400 mb-6 line-clamp-4 text-sm flex-grow">
-                        {project.desc}
-                      </p>
-
-                      {project.badges && (
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {project.badges.map((badge, i) => (
-                            <a 
-                              key={i} 
-                              href={badge.link} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="px-2 py-1 bg-gradient-to-r from-cyan-900/50 to-blue-900/50 border border-cyan-500/50 text-cyan-300 text-[10px] font-mono uppercase tracking-wider rounded flex items-center gap-1 hover:border-cyan-400 hover:text-cyan-200 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.1)]"
-                            >
-                              <Award size={10} className="text-cyan-400" />
-                              {badge.name}
-                            </a>
-                          ))}
-                        </div>
-                      )}
-
-                      <div className="mt-auto pt-4">
-                        <div className="flex flex-wrap gap-2 mb-6 min-h-[4rem] content-start">
-                          {project.tech.map((t, i) => (
-                            <span key={i} className="px-2 py-1 text-xs font-mono text-blue-300 bg-blue-900/20 border border-blue-900/50 rounded">
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="flex flex-wrap gap-3">
-                          {project.github && (
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-gray-400 hover:text-cyan-400 transition-colors uppercase tracking-widest border border-gray-800 hover:border-cyan-500/50 px-3 py-2 rounded-lg bg-black/50"
-                              title="View on GitHub"
-                            >
-                              <Github size={18} className="shrink-0" />
-                              <span>GitHub</span>
-                            </a>
-                          )}
-                          {project.playStore && (
-                            <a
-                              href={project.playStore}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest border border-cyan-500/30 hover:border-cyan-500 px-3 py-2 rounded-lg bg-cyan-900/10 shadow-[0_0_10px_rgba(0,243,255,0.1)]"
-                              title="Get it on Play Store"
-                            >
-                              <Play size={18} fill="currentColor" className="shrink-0" />
-                              <span>Play Store</span>
-                            </a>
-                          )}
-                          {!project.github && !project.playStore && project.link && (
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest"
-                            >
-                              View Project <ExternalLink size={14} className="shrink-0" />
-                            </a>
-                          )}
+              {projectFilter === "Open Source" ? (
+                <div className="flex flex-col md:flex-row gap-16 md:gap-32 justify-center items-center w-full min-h-[400px]">
+                  <div className="relative group cursor-pointer text-center">
+                    <div className="absolute inset-0 bg-cyan-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <img src="/gssoc.png" alt="GSOC Contributor" className="w-48 h-48 md:w-64 md:h-64 object-contain relative z-10 group-hover:scale-110 transition-transform duration-500 mx-auto" />
+                    <p className="mt-6 text-xl text-white font-black group-hover:text-cyan-400 transition-colors">GSSOC Contributor - 2026</p>
+                    <p className="text-gray-500 font-mono text-sm mt-2">GirlScript Summer of Code</p>
+                  </div>
+                  <div className="relative group cursor-pointer text-center">
+                    <div className="absolute inset-0 bg-blue-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <img src="/nsoc.png" alt="NSOC Contributor" className="w-48 h-48 md:w-64 md:h-64 object-contain relative z-10 group-hover:scale-110 transition-transform duration-500 mx-auto" />
+                    <p className="mt-6 text-xl text-white font-black group-hover:text-blue-400 transition-colors">NSOC Contributor - 2026</p>
+                    <p className="text-gray-500 font-mono text-sm mt-2">Nexus Spring of Code</p>
+                  </div>
+                </div>
+              ) : (
+                [
+                  {
+                    title: "WalletX - Master Your Money",
+                    desc: "A comprehensive personal finance manager that tracks daily expenses, visualizes spending patterns, and helps users stay within budget. Developed as a high-performance individual project with a focus on premium UI and data security.",
+                    tech: ["React Native", "SQLite", "Local Storage"],
+                    github: "https://github.com/bhagyasandakelum/walletx",
+                    playStore: "https://play.google.com/store/apps/details?id=com.bhagyaslive.walletx", // Replace with your actual Play Store link
+                    image: "/pr4.png",
+                    status: "LIVE",
+                    category: "Individual"
+                  },
+                  {
+                    title: "Lanka Blood Donate",
+                    desc: "Connects donors with blood banks. Features real-time requests and eligibility algorithms.",
+                    tech: ["React", "PostgreSQL", "Ballerina"],
+                    github: "https://github.com/PamudaUposath/iwb25-296-genalphaz",
+                    image: "/pr1.png",
+                    status: "DEPLOYED",
+                    category: "Group"
+                  },
+                  {
+                    title: "Student Attendance System",
+                    desc: "Role-based dashboards for administrators using dynamic session tracking.",
+                    tech: ["PHP", "MySQL", "AdminLTE"],
+                    github: "https://github.com/JanaRv0/SAMS",
+                    image: "/pr2.png",
+                    status: "DEPLOYED",
+                    category: "Group"
+                  },
+                  {
+                    title: "Shieldro – Real-Time Website Security Analyzer",
+                    desc: "A Chrome extension that detects insecure HTTP, mixed content, phishing patterns, and missing security headers, mapping findings to OWASP Top 10 and visualizing risk through a modern security wheel. All analysis runs locally in the browser.",
+                    tech: ["Manifest V3", "JavaScript", "CSS"],
+                    github: "https://github.com/bhagyasandakelum/shieldro",
+                    image: "/pr3.png",
+                    status: "DEPLOYED",
+                    category: "Individual"
+                  },
+                  {
+                    title: "React Documentation (Open Source)",
+                    desc: "Contributed to the core React documentation by fixing typos, improving examples, and translating pages to support the global developer community.",
+                    tech: ["Markdown", "React", "Git"],
+                    github: "https://github.com/reactjs/react.dev",
+                    image: "/pr1.png",
+                    status: "MERGED",
+                    category: "Open Source",
+                    badges: [
+                      { name: "Top Contributor", link: "https://github.com/reactjs/react.dev" }
+                    ]
+                  },
+                  {
+                    title: "Next.js Examples (Open Source)",
+                    desc: "Added new boilerplate examples for implementing secure authentication patterns using standard Web APIs inside Next.js 14 App Router.",
+                    tech: ["Next.js", "TypeScript"],
+                    github: "https://github.com/vercel/next.js",
+                    image: "/pr2.png",
+                    status: "MERGED",
+                    category: "Open Source",
+                    badges: [
+                      { name: "Auth Contributor", link: "https://github.com/vercel/next.js" }
+                    ]
+                  },
+                ]
+                  .filter(project => projectFilter === "All" || project.category === projectFilter)
+                  .map((project, idx) => (
+                    <CyberCard key={idx} className="w-[320px] md:w-[400px] h-auto min-h-[580px] snap-center group p-0 bg-gray-900/20 border-gray-800 flex flex-col shrink-0 overflow-hidden">
+                      <div className="relative h-56 overflow-hidden border-b border-gray-800 shrink-0">
+                        <div className="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition-colors z-10" />
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 text-xs font-mono text-cyan-400 border border-cyan-500/30 z-20">
+                          STATUS: {project.status}
                         </div>
                       </div>
-                    </div>
-                  </CyberCard>
-                ))}
+
+                      <div className="p-6 flex flex-col flex-grow">
+                        <div className="flex justify-between items-start mb-3">
+                          <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors font-mono line-clamp-2 h-14">
+                            {project.title}
+                          </h3>
+                          <span className="text-[10px] px-2 py-1 rounded bg-blue-900/30 text-cyan-300 border border-blue-900/50 uppercase tracking-wider shrink-0 ml-2">
+                            {project.category}
+                          </span>
+                        </div>
+
+                        <p className="text-gray-400 mb-6 line-clamp-4 text-sm flex-grow">
+                          {project.desc}
+                        </p>
+
+                        {project.badges && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {project.badges.map((badge, i) => (
+                              <a
+                                key={i}
+                                href={badge.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-2 py-1 bg-gradient-to-r from-cyan-900/50 to-blue-900/50 border border-cyan-500/50 text-cyan-300 text-[10px] font-mono uppercase tracking-wider rounded flex items-center gap-1 hover:border-cyan-400 hover:text-cyan-200 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.1)]"
+                              >
+                                <Award size={10} className="text-cyan-400" />
+                                {badge.name}
+                              </a>
+                            ))}
+                          </div>
+                        )}
+
+                        <div className="mt-auto pt-4">
+                          <div className="flex flex-wrap gap-2 mb-6 min-h-[4rem] content-start">
+                            {project.tech.map((t, i) => (
+                              <span key={i} className="px-2 py-1 text-xs font-mono text-blue-300 bg-blue-900/20 border border-blue-900/50 rounded">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="flex flex-wrap gap-3">
+                            {project.github && (
+                              <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-gray-400 hover:text-cyan-400 transition-colors uppercase tracking-widest border border-gray-800 hover:border-cyan-500/50 px-3 py-2 rounded-lg bg-black/50"
+                                title="View on GitHub"
+                              >
+                                <Github size={18} className="shrink-0" />
+                                <span>GitHub</span>
+                              </a>
+                            )}
+                            {project.playStore && (
+                              <a
+                                href={project.playStore}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest border border-cyan-500/30 hover:border-cyan-500 px-3 py-2 rounded-lg bg-cyan-900/10 shadow-[0_0_10px_rgba(0,243,255,0.1)]"
+                                title="Get it on Play Store"
+                              >
+                                <Play size={18} fill="currentColor" className="shrink-0" />
+                                <span>Play Store</span>
+                              </a>
+                            )}
+                            {!project.github && !project.playStore && project.link && (
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest"
+                              >
+                                View Project <ExternalLink size={14} className="shrink-0" />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </CyberCard>
+                  ))
+              )}
             </motion.div>
 
             {/* Scroll Buttons - Centered Below */}
@@ -598,47 +614,48 @@ export default function Portfolio() {
         <section id="education" className="min-h-[80vh] py-20 px-4 relative flex items-center">
           {/* Background effects */}
           <div className="absolute top-1/2 left-0 w-full h-full bg-gradient-to-b from-blue-900/5 to-transparent pointer-events-none -translate-y-1/2" />
-          
+
           <div className="max-w-7xl mx-auto w-full relative z-10">
             <SectionTitle icon={BookOpen}>Education</SectionTitle>
-            
-            <div className="mt-20 md:mt-32 relative">
+
+            <div className="mt-20 md:mt-32 relative pt-12">
               {/* Horizontal Line Background */}
-              <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-800 hidden md:block -translate-y-1/2"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gray-800 hidden md:block"></div>
               {/* Progress Line */}
-              <div className="absolute top-1/2 left-0 w-1/2 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 hidden md:block -translate-y-1/2 shadow-[0_0_15px_rgba(0,243,255,0.5)]"></div>
+              <div className="absolute top-0 left-0 w-1/2 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 hidden md:block shadow-[0_0_15px_rgba(0,243,255,0.5)]"></div>
+
+              {/* Timeline Dots */}
+              <div className="absolute -top-[10px] left-0 hidden md:block w-6 h-6 rounded-full bg-black border-4 border-blue-500 z-10 transition-colors duration-500 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+              <div className="absolute -top-[10px] left-1/2 hidden md:block w-6 h-6 rounded-full bg-black border-4 border-cyan-500 z-10 transition-colors duration-500 shadow-[0_0_20px_rgba(0,243,255,0.5)]"></div>
 
               <div className="grid md:grid-cols-2 gap-16 md:gap-8 relative z-10">
-                {/* High School */}
-                <div className="relative group">
-                  <div className="w-8 h-8 rounded-full bg-black border-4 border-cyan-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-0 md:translate-x-0 hidden md:block shadow-[0_0_20px_rgba(0,243,255,0.8)] z-10 group-hover:scale-125 transition-transform duration-300">
-                    <div className="absolute inset-1 bg-cyan-500 rounded-full animate-ping opacity-50"></div>
-                  </div>
-                  
-                  <div className="md:ml-12 hover:-translate-y-2 transition-transform duration-500 text-center md:text-left bg-gradient-to-br from-gray-900/40 to-transparent p-8 md:p-12 rounded-3xl border border-gray-800/50 backdrop-blur-sm group-hover:border-cyan-500/30 shadow-lg">
-                    <div className="w-4 h-4 rounded-full bg-cyan-500 mb-6 mx-auto md:hidden"></div>
-                    <h4 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 group-hover:from-cyan-300 group-hover:to-blue-500 transition-all duration-500">High School</h4>
-                    <p className="text-cyan-400/80 font-mono text-xl mt-4 tracking-wider uppercase">Advanced Level</p>
-                    <div className="mt-8 inline-flex items-center gap-2 px-6 py-2 bg-black/50 text-gray-300 text-sm font-mono rounded-full border border-gray-700 shadow-inner group-hover:border-cyan-500/50 group-hover:text-cyan-400 transition-colors">
-                      <Zap size={14} className="text-cyan-500" />
-                      2018 - 2021
+                {/* University */}
+                <div className="relative group flex flex-col items-center md:items-start text-center md:text-left">
+                  <div className="md:pr-8 hover:-translate-y-2 transition-transform duration-500 flex flex-col items-center md:items-start w-full">
+                    <div className="w-4 h-4 rounded-full bg-blue-500 mb-4 md:hidden"></div>
+                    <p className="text-blue-400 font-mono text-sm uppercase tracking-wider mb-2">BSc (Hons) in Computer Science</p>
+                    <h4 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">University of Jaffna</h4>
+                    <p className="text-gray-400 mt-4 text-sm max-w-sm">Focusing on Cybersecuity.</p>
+                    <p className="text-gray-300 font-bold mt-2 font-mono text-sm">GPA: 3.3/4.0(57/120)</p>
+                    <div className="mt-6 inline-flex items-center gap-2 px-4 py-1.5 bg-blue-900/20 text-blue-300 text-xs font-mono rounded-full border border-blue-500/30 group-hover:border-blue-500 transition-colors">
+                      <Zap size={12} className="text-blue-500" />
+                      2023 - Present
                     </div>
                   </div>
                 </div>
 
-                {/* University */}
-                <div className="relative group">
-                  <div className="w-8 h-8 rounded-full bg-black border-4 border-gray-700 group-hover:border-blue-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-0 md:translate-x-0 hidden md:block z-10 transition-colors duration-500 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.8)]">
-                     <div className="absolute inset-1 bg-blue-500 rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
-                  </div>
-                  
-                  <div className="md:ml-12 hover:-translate-y-2 transition-transform duration-500 text-center md:text-left bg-gradient-to-br from-gray-900/40 to-transparent p-8 md:p-12 rounded-3xl border border-gray-800/50 backdrop-blur-sm group-hover:border-blue-500/30 shadow-lg">
-                    <div className="w-4 h-4 rounded-full bg-gray-600 mb-6 mx-auto md:hidden"></div>
-                    <h4 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 group-hover:from-blue-300 group-hover:to-cyan-500 transition-all duration-500">University of Jaffna</h4>
-                    <p className="text-blue-400/80 font-mono text-xl mt-4 tracking-wider uppercase">BSc (Hons) in Computer Science</p>
-                    <div className="mt-8 inline-flex items-center gap-2 px-6 py-2 bg-black/50 text-gray-300 text-sm font-mono rounded-full border border-gray-700 shadow-inner group-hover:border-blue-500/50 group-hover:text-blue-400 transition-colors">
-                       <Zap size={14} className="text-blue-500" />
-                       2022 - Present
+                {/* High School */}
+                <div className="relative group flex flex-col items-center md:items-start text-center md:text-left md:pl-8">
+                  <div className="hover:-translate-y-2 transition-transform duration-500 flex flex-col items-center md:items-start w-full">
+                    <div className="w-4 h-4 rounded-full bg-cyan-500 mb-4 md:hidden"></div>
+                    <div className="text-cyan-400 mb-4 flex justify-center md:justify-start">
+                      <Award size={28} />
+                    </div>
+                    <h4 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">DS Senanayake National School</h4>
+                    <p className="text-gray-400 mt-4 text-sm max-w-sm">Foundation in science, mathematics & ICT.</p>
+                    <div className="mt-6 inline-flex items-center gap-2 px-4 py-1.5 bg-cyan-900/20 text-cyan-300 text-xs font-mono rounded-full border border-cyan-500/30 group-hover:border-cyan-500 transition-colors">
+                      <Zap size={12} className="text-cyan-500" />
+                      2018 - 2020
                     </div>
                   </div>
                 </div>
@@ -708,20 +725,19 @@ export default function Portfolio() {
           <div className="absolute top-1/3 left-0 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-6xl mx-auto relative z-10">
-            <SectionTitle icon={Globe}>Journey</SectionTitle>
+            <SectionTitle icon={Globe}>Leadership & Volunteering</SectionTitle>
 
             {/* Journey Filter Controls */}
             <div className="flex justify-center mt-12 mb-16">
-              <div className="flex gap-4 p-2 bg-gray-900/50 rounded-full border border-gray-800 backdrop-blur-sm">
-                {["Leadership", "Volunteer"].map((filter) => (
+              <div className="flex gap-4 flex-wrap justify-center">
+                {["Leadership", "Volunteering"].map((filter) => (
                   <button
                     key={filter}
                     onClick={() => setJourneyFilter(filter)}
-                    className={`px-8 py-3 rounded-full font-mono text-sm transition-all duration-300 ${
-                      journeyFilter === filter
-                        ? "bg-cyan-500/20 border-cyan-500 text-cyan-400 shadow-[0_0_15px_rgba(0,243,255,0.3)]"
-                        : "border-transparent text-gray-500 hover:text-cyan-300 hover:bg-gray-800"
-                    }`}
+                    className={`px-6 py-2 rounded-full font-mono text-sm transition-all duration-300 border ${journeyFilter === filter
+                      ? "bg-cyan-500/20 border-cyan-500 text-cyan-400 shadow-[0_0_15px_rgba(0,243,255,0.3)]"
+                      : "bg-gray-900/50 border-gray-800 text-gray-500 hover:border-cyan-500/50 hover:text-cyan-300"
+                      }`}
                   >
                     {filter}
                   </button>
@@ -729,7 +745,7 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div className="relative border-l-2 border-gray-800 ml-4 md:ml-6 min-h-[500px]">
+            <div className="relative min-h-[500px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={journeyFilter}
@@ -737,76 +753,71 @@ export default function Portfolio() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.4 }}
-                  className="space-y-12"
                 >
                   {journeyFilter === "Leadership" && (
-                    <>
+                    <div className="relative border-l-2 border-gray-800 ml-4 md:ml-6 space-y-12">
                       {/* Item 1 */}
                       <div className="relative pl-8 md:pl-12 group">
                         <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
                         <div className="absolute -left-1 top-[26px] w-8 h-px bg-cyan-500/50 hidden md:block"></div>
-                        <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
+                        <div className="py-4 hover:-translate-y-2 transition-transform duration-300">
                           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-                            <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">AWS Cloud Club - UOJ</h4>
-                            <span className="self-start px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30">Current</span>
+                            <h4 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">AWS Cloud Club - UOJ</h4>
+                            <span className="self-start text-cyan-400 text-xs font-mono uppercase tracking-widest">Current</span>
                           </div>
-                          <div className="p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
+                          <div>
                             <p className="text-cyan-400 font-bold flex items-center gap-3">
-                              <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span> 
+                              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
                               Media and Communication Lead
                             </p>
                           </div>
-                        </CyberCard>
+                        </div>
                       </div>
 
                       {/* Item 2 */}
                       <div className="relative pl-8 md:pl-12 group">
                         <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
                         <div className="absolute -left-1 top-[26px] w-8 h-px bg-cyan-500/50 hidden md:block"></div>
-                        <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
+                        <div className="py-4 hover:-translate-y-2 transition-transform duration-300">
                           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-                            <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE SLSAC</h4>
-                            <span className="self-start px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30">Current</span>
+                            <h4 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE SLSAC</h4>
+                            <span className="self-start text-cyan-400 text-xs font-mono uppercase tracking-widest">Current</span>
                           </div>
-                          <div className="p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
+                          <div>
                             <p className="text-cyan-400 font-bold flex items-center gap-3">
-                              <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span> 
+                              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
                               Volunteer Management Coordinator
                             </p>
                           </div>
-                        </CyberCard>
+                        </div>
                       </div>
 
                       {/* Item 3 */}
                       <div className="relative pl-8 md:pl-12 group">
                         <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-blue-500 group-hover:bg-blue-500 transition-colors"></div>
                         <div className="absolute -left-1 top-[26px] w-8 h-px bg-blue-500/50 hidden md:block"></div>
-                        <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
+                        <div className="py-4 hover:-translate-y-2 transition-transform duration-300">
                           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
-                            <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE Student Branch - University of Jaffna</h4>
-                            <span className="self-start px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-mono rounded-full border border-blue-500/30">2024 - 2026</span>
+                            <h4 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE Student Branch - University of Jaffna</h4>
+                            <span className="self-start text-blue-400 text-xs font-mono uppercase tracking-widest">2024 - 2026</span>
                           </div>
-                          <div className="grid sm:grid-cols-2 gap-4">
-                            <div className="p-4 bg-black/50 rounded-lg border border-cyan-500/30 relative overflow-hidden group/item">
-                              <div className="absolute left-0 top-0 w-1 h-full bg-cyan-500 group-hover/item:w-full transition-all duration-500 opacity-10"></div>
-                              <div className="absolute left-0 top-0 w-1 h-full bg-cyan-500"></div>
-                              <p className="text-cyan-400 font-bold relative z-10">Chairperson</p>
-                              <p className="text-gray-500 text-xs font-mono mt-1 relative z-10">2025 - 2026</p>
+                          <div className="grid sm:grid-cols-2 gap-8">
+                            <div>
+                              <p className="text-cyan-400 font-bold">Chairperson</p>
+                              <p className="text-gray-500 text-sm font-mono mt-1">2025 - 2026</p>
                             </div>
-                            <div className="p-4 bg-black/50 rounded-lg border border-gray-800 relative overflow-hidden group/item">
-                              <div className="absolute left-0 top-0 w-1 h-full bg-gray-600 group-hover/item:w-full transition-all duration-500 opacity-10"></div>
-                              <div className="absolute left-0 top-0 w-1 h-full bg-gray-600"></div>
-                              <p className="text-gray-300 font-bold relative z-10">Design Team Member</p>
-                              <p className="text-gray-500 text-xs font-mono mt-1 relative z-10">2024 - 2025</p>
+                            <div>
+                              <p className="text-gray-300 font-bold">Design Team Member</p>
+                              <p className="text-gray-500 text-sm font-mono mt-1">2024 - 2025</p>
                             </div>
                           </div>
-                        </CyberCard>
+                        </div>
                       </div>
-                    </>
+                    </div>
                   )}
 
-                  {journeyFilter === "Volunteer" && (
-                    <>
+                  {journeyFilter === "Volunteering" && (
+                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto pt-6">
                       {[
                         { event: "YarlInsight 2.0", role: "Event Chair", org: "IEEE-SB-UoJ" },
                         { event: "JamborIEEE 2025", role: "Vice Chair - Design", org: "IEEE SLSAC" },
@@ -814,19 +825,16 @@ export default function Portfolio() {
                         { event: "IEEEXtreme 18.0 & YarlXtreme", role: "Public Visibility Team Lead", org: "IEEE-SB-UoJ" },
                         { event: "YarlInsight 1.0", role: "Public Visibility Team Member", org: "IEEE-SB-UoJ" }
                       ].map((vol, idx) => (
-                        <div key={idx} className="relative pl-8 md:pl-12 group">
-                          <div className="absolute -left-[9px] top-5 w-4 h-4 rounded-full bg-black border-2 border-blue-500 group-hover:bg-blue-500 transition-colors"></div>
-                          <div className="absolute -left-1 top-[26px] w-8 h-px bg-blue-500/50 hidden md:block"></div>
-                          <CyberCard className="p-6 border border-gray-800 hover:border-blue-500/50 hover:bg-blue-900/10 transition-all duration-300">
-                            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-2">
-                              <h4 className="text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors">{vol.event}</h4>
-                              <p className="text-blue-400 font-mono text-sm">{vol.role}</p>
-                            </div>
-                            <p className="text-gray-500 text-xs font-mono uppercase tracking-wider">{vol.org}</p>
-                          </CyberCard>
+                        <div key={idx} className="group py-6 border-b border-gray-800/50 hover:border-blue-500/50 transition-all duration-300">
+                          <h4 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">{vol.event}</h4>
+                          <p className="text-blue-400 font-mono text-sm mt-2">{vol.role}</p>
+                          <p className="text-gray-500 text-xs font-mono uppercase tracking-wider mt-4 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500/50"></span>
+                            {vol.org}
+                          </p>
                         </div>
                       ))}
-                    </>
+                    </div>
                   )}
                 </motion.div>
               </AnimatePresence>
@@ -840,9 +848,8 @@ export default function Portfolio() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-gray-900/50 to-black border border-blue-900/30 p-8 md:p-12 rounded-2xl relative overflow-hidden"
+              className="p-8 md:p-12 relative"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-pulse" />
 
               <h2 className="text-4xl font-bold text-white mb-6">Let's Connect</h2>
               <p className="text-gray-400 mb-8 max-w-xl mx-auto">
@@ -861,9 +868,9 @@ export default function Portfolio() {
                 <div className="flex gap-4 flex-wrap justify-center mt-4 md:mt-0">
                   <a href="https://github.com/bhagyasandakelum" className="text-gray-400 hover:text-cyan-400 transition-colors" title="GitHub"><Github size={24} /></a>
                   <a href="https://www.linkedin.com/in/bhagyaslive/" className="text-gray-400 hover:text-cyan-400 transition-colors" title="LinkedIn"><Linkedin size={24} /></a>
-                  <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Twitter"><Twitter size={24} /></a>
-                  <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Instagram"><Instagram size={24} /></a>
-                  <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Facebook"><Facebook size={24} /></a>
+                  <a href="https://x.com/bhagyslive" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Twitter"><Twitter size={24} /></a>
+                  <a href="https://www.instagram.com/bhagyaslive/" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Instagram"><Instagram size={24} /></a>
+                  <a href="https://www.facebook.com/bhagyaslive/" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Facebook"><Facebook size={24} /></a>
                 </div>
               </div>
             </motion.div>

@@ -107,6 +107,7 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("about");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [projectFilter, setProjectFilter] = useState("All");
+  const [journeyFilter, setJourneyFilter] = useState("Leadership");
   const scrollContainerRef = useRef(null);
 
   const scroll = (direction) => {
@@ -119,10 +120,10 @@ export default function Portfolio() {
 
   const sections = [
     { id: "about", label: "Home", icon: User },
-    { id: "education", label: "Education", icon: BookOpen },
     { id: "projects", label: "Projects", icon: Code },
+    { id: "education", label: "Education", icon: BookOpen },
     { id: "certificates", label: "Certificates", icon: Award },
-    { id: "leadership", label: "Leadership & Volunteering", icon: Globe },
+    { id: "leadership", label: "Journey", icon: Globe },
     { id: "blog", label: "Blog", icon: FileText, external: "https://hashcs.vercel.app" },
     { id: "contact", label: "Contact", icon: Mail },
   ];
@@ -377,43 +378,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* EDUCATION SECTION */}
-        <section id="education" className="py-20 px-4 relative">
-          <div className="max-w-5xl mx-auto relative z-10">
-            <SectionTitle icon={BookOpen}>Education</SectionTitle>
-            
-            <div className="mt-20 relative">
-              {/* Horizontal Line Background */}
-              <div className="absolute top-8 left-0 w-full h-1 bg-gray-800 hidden md:block"></div>
-              {/* Progress Line */}
-              <div className="absolute top-8 left-0 w-1/2 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 hidden md:block shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
 
-              <div className="grid md:grid-cols-2 gap-12 relative z-10">
-                {/* High School */}
-                <div className="relative group">
-                  <div className="w-6 h-6 rounded-full bg-cyan-500 border-4 border-black absolute -top-11 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 hidden md:block shadow-[0_0_15px_rgba(0,243,255,0.8)]"></div>
-                  <CyberCard className="hover:-translate-y-2 transition-transform text-center md:text-left">
-                    <div className="w-4 h-4 rounded-full bg-cyan-500 mb-4 mx-auto md:hidden"></div>
-                    <h4 className="text-xl font-bold text-white group-hover:text-cyan-400">High School</h4>
-                    <p className="text-gray-400 font-mono text-sm mt-2">Advanced Level</p>
-                    <div className="mt-4 inline-block px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30">2018 - 2021</div>
-                  </CyberCard>
-                </div>
-
-                {/* University */}
-                <div className="relative group">
-                  <div className="w-6 h-6 rounded-full bg-black border-4 border-cyan-500 absolute -top-11 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 hidden md:block group-hover:bg-cyan-500 transition-colors"></div>
-                  <CyberCard className="hover:-translate-y-2 transition-transform text-center md:text-left">
-                    <div className="w-4 h-4 rounded-full bg-gray-600 mb-4 mx-auto md:hidden"></div>
-                    <h4 className="text-xl font-bold text-white group-hover:text-cyan-400">University of Jaffna</h4>
-                    <p className="text-gray-400 font-mono text-sm mt-2">BSc (Hons) in Computer Science</p>
-                    <div className="mt-4 inline-block px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-mono rounded-full border border-blue-500/30">2022 - Present</div>
-                  </CyberCard>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* PROJECTS */}
         <section id="projects" className="min-h-screen py-20 px-4 relative">
@@ -630,6 +595,59 @@ export default function Portfolio() {
         </section>
 
         {/* CERTIFICATES */}
+        <section id="education" className="min-h-[80vh] py-20 px-4 relative flex items-center">
+          {/* Background effects */}
+          <div className="absolute top-1/2 left-0 w-full h-full bg-gradient-to-b from-blue-900/5 to-transparent pointer-events-none -translate-y-1/2" />
+          
+          <div className="max-w-7xl mx-auto w-full relative z-10">
+            <SectionTitle icon={BookOpen}>Education</SectionTitle>
+            
+            <div className="mt-20 md:mt-32 relative">
+              {/* Horizontal Line Background */}
+              <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-800 hidden md:block -translate-y-1/2"></div>
+              {/* Progress Line */}
+              <div className="absolute top-1/2 left-0 w-1/2 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 hidden md:block -translate-y-1/2 shadow-[0_0_15px_rgba(0,243,255,0.5)]"></div>
+
+              <div className="grid md:grid-cols-2 gap-16 md:gap-8 relative z-10">
+                {/* High School */}
+                <div className="relative group">
+                  <div className="w-8 h-8 rounded-full bg-black border-4 border-cyan-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-0 md:translate-x-0 hidden md:block shadow-[0_0_20px_rgba(0,243,255,0.8)] z-10 group-hover:scale-125 transition-transform duration-300">
+                    <div className="absolute inset-1 bg-cyan-500 rounded-full animate-ping opacity-50"></div>
+                  </div>
+                  
+                  <div className="md:ml-12 hover:-translate-y-2 transition-transform duration-500 text-center md:text-left bg-gradient-to-br from-gray-900/40 to-transparent p-8 md:p-12 rounded-3xl border border-gray-800/50 backdrop-blur-sm group-hover:border-cyan-500/30 shadow-lg">
+                    <div className="w-4 h-4 rounded-full bg-cyan-500 mb-6 mx-auto md:hidden"></div>
+                    <h4 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 group-hover:from-cyan-300 group-hover:to-blue-500 transition-all duration-500">High School</h4>
+                    <p className="text-cyan-400/80 font-mono text-xl mt-4 tracking-wider uppercase">Advanced Level</p>
+                    <div className="mt-8 inline-flex items-center gap-2 px-6 py-2 bg-black/50 text-gray-300 text-sm font-mono rounded-full border border-gray-700 shadow-inner group-hover:border-cyan-500/50 group-hover:text-cyan-400 transition-colors">
+                      <Zap size={14} className="text-cyan-500" />
+                      2018 - 2021
+                    </div>
+                  </div>
+                </div>
+
+                {/* University */}
+                <div className="relative group">
+                  <div className="w-8 h-8 rounded-full bg-black border-4 border-gray-700 group-hover:border-blue-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-0 md:translate-x-0 hidden md:block z-10 transition-colors duration-500 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.8)]">
+                     <div className="absolute inset-1 bg-blue-500 rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
+                  </div>
+                  
+                  <div className="md:ml-12 hover:-translate-y-2 transition-transform duration-500 text-center md:text-left bg-gradient-to-br from-gray-900/40 to-transparent p-8 md:p-12 rounded-3xl border border-gray-800/50 backdrop-blur-sm group-hover:border-blue-500/30 shadow-lg">
+                    <div className="w-4 h-4 rounded-full bg-gray-600 mb-6 mx-auto md:hidden"></div>
+                    <h4 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 group-hover:from-blue-300 group-hover:to-cyan-500 transition-all duration-500">University of Jaffna</h4>
+                    <p className="text-blue-400/80 font-mono text-xl mt-4 tracking-wider uppercase">BSc (Hons) in Computer Science</p>
+                    <div className="mt-8 inline-flex items-center gap-2 px-6 py-2 bg-black/50 text-gray-300 text-sm font-mono rounded-full border border-gray-700 shadow-inner group-hover:border-blue-500/50 group-hover:text-blue-400 transition-colors">
+                       <Zap size={14} className="text-blue-500" />
+                       2022 - Present
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CERTIFICATES */}
         <section id="certificates" className="min-h-screen py-20 px-4 bg-black/50 relative">
           {/* Background Filler */}
           <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-blue-900/10 to-transparent pointer-events-none" />
@@ -685,121 +703,133 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* LEADERSHIP & VOLUNTEER */}
+        {/* LEADERSHIP & VOLUNTEER (JOURNEY) */}
         <section id="leadership" className="min-h-screen py-20 px-4 relative">
           <div className="absolute top-1/3 left-0 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-6xl mx-auto relative z-10">
-            <SectionTitle icon={Globe}>Leadership & Volunteer</SectionTitle>
+            <SectionTitle icon={Globe}>Journey</SectionTitle>
 
-            <div className="space-y-16 mt-12">
-              {/* Leadership Section - Vertical Timeline */}
-              <div>
-                <div className="flex items-center gap-4 mb-12">
-                  <div className="p-3 bg-cyan-900/30 rounded-lg border border-cyan-500/30">
-                    <Shield className="text-cyan-400 w-6 h-6" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-white font-mono">Leadership Ladder</h3>
-                  <div className="h-px flex-grow bg-gradient-to-r from-cyan-500/30 to-transparent ml-4"></div>
-                </div>
-
-                <div className="relative border-l-2 border-gray-800 ml-4 md:ml-6 space-y-12">
-                  
-                  {/* Item 1 */}
-                  <div className="relative pl-8 md:pl-12 group">
-                    <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
-                    <div className="absolute -left-1 top-[26px] w-8 h-px bg-cyan-500/50 hidden md:block"></div>
-                    <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
-                      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-                        <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">AWS Cloud Club - UOJ</h4>
-                        <span className="self-start px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30">Current</span>
-                      </div>
-                      <div className="p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
-                        <p className="text-cyan-400 font-bold flex items-center gap-3">
-                          <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span> 
-                          Media and Communication Lead
-                        </p>
-                      </div>
-                    </CyberCard>
-                  </div>
-
-                  {/* Item 2 */}
-                  <div className="relative pl-8 md:pl-12 group">
-                    <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
-                    <div className="absolute -left-1 top-[26px] w-8 h-px bg-cyan-500/50 hidden md:block"></div>
-                    <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
-                      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-                        <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE SLSAC</h4>
-                        <span className="self-start px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30">Current</span>
-                      </div>
-                      <div className="p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
-                        <p className="text-cyan-400 font-bold flex items-center gap-3">
-                          <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span> 
-                          Volunteer Management Coordinator
-                        </p>
-                      </div>
-                    </CyberCard>
-                  </div>
-
-                  {/* Item 3 */}
-                  <div className="relative pl-8 md:pl-12 group">
-                    <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-blue-500 group-hover:bg-blue-500 transition-colors"></div>
-                    <div className="absolute -left-1 top-[26px] w-8 h-px bg-blue-500/50 hidden md:block"></div>
-                    <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
-                      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
-                        <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE Student Branch - University of Jaffna</h4>
-                        <span className="self-start px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-mono rounded-full border border-blue-500/30">2024 - 2026</span>
-                      </div>
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        <div className="p-4 bg-black/50 rounded-lg border border-cyan-500/30 relative overflow-hidden group/item">
-                          <div className="absolute left-0 top-0 w-1 h-full bg-cyan-500 group-hover/item:w-full transition-all duration-500 opacity-10"></div>
-                          <div className="absolute left-0 top-0 w-1 h-full bg-cyan-500"></div>
-                          <p className="text-cyan-400 font-bold relative z-10">Chairperson</p>
-                          <p className="text-gray-500 text-xs font-mono mt-1 relative z-10">2025 - 2026</p>
-                        </div>
-                        <div className="p-4 bg-black/50 rounded-lg border border-gray-800 relative overflow-hidden group/item">
-                          <div className="absolute left-0 top-0 w-1 h-full bg-gray-600 group-hover/item:w-full transition-all duration-500 opacity-10"></div>
-                          <div className="absolute left-0 top-0 w-1 h-full bg-gray-600"></div>
-                          <p className="text-gray-300 font-bold relative z-10">Design Team Member</p>
-                          <p className="text-gray-500 text-xs font-mono mt-1 relative z-10">2024 - 2025</p>
-                        </div>
-                      </div>
-                    </CyberCard>
-                  </div>
-                </div>
+            {/* Journey Filter Controls */}
+            <div className="flex justify-center mt-12 mb-16">
+              <div className="flex gap-4 p-2 bg-gray-900/50 rounded-full border border-gray-800 backdrop-blur-sm">
+                {["Leadership", "Volunteer"].map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => setJourneyFilter(filter)}
+                    className={`px-8 py-3 rounded-full font-mono text-sm transition-all duration-300 ${
+                      journeyFilter === filter
+                        ? "bg-cyan-500/20 border-cyan-500 text-cyan-400 shadow-[0_0_15px_rgba(0,243,255,0.3)]"
+                        : "border-transparent text-gray-500 hover:text-cyan-300 hover:bg-gray-800"
+                    }`}
+                  >
+                    {filter}
+                  </button>
+                ))}
               </div>
+            </div>
 
-              {/* Volunteer Section - Vertical Timeline */}
-              <div className="pt-16">
-                <div className="flex items-center gap-4 mb-12">
-                  <div className="p-3 bg-blue-900/30 rounded-lg border border-blue-500/30">
-                    <User className="text-blue-400 w-6 h-6" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-white font-mono">Volunteer Journey</h3>
-                  <div className="h-px flex-grow bg-gradient-to-r from-blue-500/30 to-transparent ml-4"></div>
-                </div>
+            <div className="relative border-l-2 border-gray-800 ml-4 md:ml-6 min-h-[500px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={journeyFilter}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="space-y-12"
+                >
+                  {journeyFilter === "Leadership" && (
+                    <>
+                      {/* Item 1 */}
+                      <div className="relative pl-8 md:pl-12 group">
+                        <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
+                        <div className="absolute -left-1 top-[26px] w-8 h-px bg-cyan-500/50 hidden md:block"></div>
+                        <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
+                          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
+                            <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">AWS Cloud Club - UOJ</h4>
+                            <span className="self-start px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30">Current</span>
+                          </div>
+                          <div className="p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
+                            <p className="text-cyan-400 font-bold flex items-center gap-3">
+                              <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span> 
+                              Media and Communication Lead
+                            </p>
+                          </div>
+                        </CyberCard>
+                      </div>
 
-                <div className="relative border-l-2 border-gray-800 ml-4 md:ml-6 space-y-8">
-                  {[
-                    { event: "YarlInsight 2.0", role: "Event Chair", org: "IEEE-SB-UoJ" },
-                    { event: "JamborIEEE 2025", role: "Vice Chair - Design", org: "IEEE SLSAC" },
-                    { event: "TechFest", role: "Program Team Member", org: "IEEE Techverse Sri Lanka" },
-                    { event: "IEEEXtreme 18.0 & YarlXtreme", role: "Public Visibility Team Lead", org: "IEEE-SB-UoJ" },
-                    { event: "YarlInsight 1.0", role: "Public Visibility Team Member", org: "IEEE-SB-UoJ" }
-                  ].map((vol, idx) => (
-                    <div key={idx} className="relative pl-8 md:pl-12 group">
-                      <div className="absolute -left-[9px] top-5 w-4 h-4 rounded-full bg-black border-2 border-blue-500 group-hover:bg-blue-500 transition-colors"></div>
-                      <CyberCard className="p-6 border border-gray-800 hover:border-blue-500/50 hover:bg-blue-900/10 transition-all duration-300">
-                        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-2">
-                          <h4 className="text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors">{vol.event}</h4>
-                          <p className="text-blue-400 font-mono text-sm">{vol.role}</p>
+                      {/* Item 2 */}
+                      <div className="relative pl-8 md:pl-12 group">
+                        <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
+                        <div className="absolute -left-1 top-[26px] w-8 h-px bg-cyan-500/50 hidden md:block"></div>
+                        <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
+                          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
+                            <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE SLSAC</h4>
+                            <span className="self-start px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30">Current</span>
+                          </div>
+                          <div className="p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
+                            <p className="text-cyan-400 font-bold flex items-center gap-3">
+                              <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span> 
+                              Volunteer Management Coordinator
+                            </p>
+                          </div>
+                        </CyberCard>
+                      </div>
+
+                      {/* Item 3 */}
+                      <div className="relative pl-8 md:pl-12 group">
+                        <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-blue-500 group-hover:bg-blue-500 transition-colors"></div>
+                        <div className="absolute -left-1 top-[26px] w-8 h-px bg-blue-500/50 hidden md:block"></div>
+                        <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
+                          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+                            <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE Student Branch - University of Jaffna</h4>
+                            <span className="self-start px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-mono rounded-full border border-blue-500/30">2024 - 2026</span>
+                          </div>
+                          <div className="grid sm:grid-cols-2 gap-4">
+                            <div className="p-4 bg-black/50 rounded-lg border border-cyan-500/30 relative overflow-hidden group/item">
+                              <div className="absolute left-0 top-0 w-1 h-full bg-cyan-500 group-hover/item:w-full transition-all duration-500 opacity-10"></div>
+                              <div className="absolute left-0 top-0 w-1 h-full bg-cyan-500"></div>
+                              <p className="text-cyan-400 font-bold relative z-10">Chairperson</p>
+                              <p className="text-gray-500 text-xs font-mono mt-1 relative z-10">2025 - 2026</p>
+                            </div>
+                            <div className="p-4 bg-black/50 rounded-lg border border-gray-800 relative overflow-hidden group/item">
+                              <div className="absolute left-0 top-0 w-1 h-full bg-gray-600 group-hover/item:w-full transition-all duration-500 opacity-10"></div>
+                              <div className="absolute left-0 top-0 w-1 h-full bg-gray-600"></div>
+                              <p className="text-gray-300 font-bold relative z-10">Design Team Member</p>
+                              <p className="text-gray-500 text-xs font-mono mt-1 relative z-10">2024 - 2025</p>
+                            </div>
+                          </div>
+                        </CyberCard>
+                      </div>
+                    </>
+                  )}
+
+                  {journeyFilter === "Volunteer" && (
+                    <>
+                      {[
+                        { event: "YarlInsight 2.0", role: "Event Chair", org: "IEEE-SB-UoJ" },
+                        { event: "JamborIEEE 2025", role: "Vice Chair - Design", org: "IEEE SLSAC" },
+                        { event: "TechFest", role: "Program Team Member", org: "IEEE Techverse Sri Lanka" },
+                        { event: "IEEEXtreme 18.0 & YarlXtreme", role: "Public Visibility Team Lead", org: "IEEE-SB-UoJ" },
+                        { event: "YarlInsight 1.0", role: "Public Visibility Team Member", org: "IEEE-SB-UoJ" }
+                      ].map((vol, idx) => (
+                        <div key={idx} className="relative pl-8 md:pl-12 group">
+                          <div className="absolute -left-[9px] top-5 w-4 h-4 rounded-full bg-black border-2 border-blue-500 group-hover:bg-blue-500 transition-colors"></div>
+                          <div className="absolute -left-1 top-[26px] w-8 h-px bg-blue-500/50 hidden md:block"></div>
+                          <CyberCard className="p-6 border border-gray-800 hover:border-blue-500/50 hover:bg-blue-900/10 transition-all duration-300">
+                            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-2">
+                              <h4 className="text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors">{vol.event}</h4>
+                              <p className="text-blue-400 font-mono text-sm">{vol.role}</p>
+                            </div>
+                            <p className="text-gray-500 text-xs font-mono uppercase tracking-wider">{vol.org}</p>
+                          </CyberCard>
                         </div>
-                        <p className="text-gray-500 text-xs font-mono uppercase tracking-wider">{vol.org}</p>
-                      </CyberCard>
-                    </div>
-                  ))}
-                </div>
-              </div>
+                      ))}
+                    </>
+                  )}
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </section>

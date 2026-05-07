@@ -22,7 +22,10 @@ import {
   ChevronLeft,
   ChevronRight,
   Play,
-  Download
+  Download,
+  Twitter,
+  Instagram,
+  Facebook
 } from "lucide-react";
 
 // --- Matrix Rain Effect Component ---
@@ -116,7 +119,7 @@ export default function Portfolio() {
 
   const sections = [
     { id: "about", label: "Home", icon: User },
-    //{ id: "skills", label: "Skills", icon: Zap },
+    { id: "education", label: "Education", icon: BookOpen },
     { id: "projects", label: "Projects", icon: Code },
     { id: "certificates", label: "Certificates", icon: Award },
     { id: "leadership", label: "Leadership & Volunteering", icon: Globe },
@@ -215,6 +218,24 @@ export default function Portfolio() {
           )}
         </AnimatePresence>
       </nav>
+
+      {/* Vertical Side Navigation (Backwards) */}
+      <div className="hidden xl:flex fixed right-4 top-1/2 -translate-y-1/2 flex-col gap-6 z-40 items-center">
+        {[...sections].reverse().map((section) => (
+          <button
+            key={section.id}
+            onClick={() => scrollToSection(section.id)}
+            style={{ writingMode: 'vertical-rl' }}
+            className={`text-xs font-mono uppercase tracking-widest transition-all duration-300 hover:-translate-x-1 rotate-180 py-2 ${
+              activeSection === section.id ? "text-cyan-400 font-bold drop-shadow-[0_0_8px_rgba(0,243,255,0.8)]" : "text-gray-600 hover:text-cyan-300"
+            }`}
+          >
+            {section.label}
+          </button>
+        ))}
+        {/* Decorative Line */}
+        <div className="w-px h-24 bg-gradient-to-t from-cyan-500/50 to-transparent mt-4"></div>
+      </div>
 
       {/* Main Content */}
       <div className="pt-16">
@@ -356,6 +377,44 @@ export default function Portfolio() {
           </div>
         </section>
 
+        {/* EDUCATION SECTION */}
+        <section id="education" className="py-20 px-4 relative">
+          <div className="max-w-5xl mx-auto relative z-10">
+            <SectionTitle icon={BookOpen}>Education</SectionTitle>
+            
+            <div className="mt-20 relative">
+              {/* Horizontal Line Background */}
+              <div className="absolute top-8 left-0 w-full h-1 bg-gray-800 hidden md:block"></div>
+              {/* Progress Line */}
+              <div className="absolute top-8 left-0 w-1/2 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 hidden md:block shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
+
+              <div className="grid md:grid-cols-2 gap-12 relative z-10">
+                {/* High School */}
+                <div className="relative group">
+                  <div className="w-6 h-6 rounded-full bg-cyan-500 border-4 border-black absolute -top-11 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 hidden md:block shadow-[0_0_15px_rgba(0,243,255,0.8)]"></div>
+                  <CyberCard className="hover:-translate-y-2 transition-transform text-center md:text-left">
+                    <div className="w-4 h-4 rounded-full bg-cyan-500 mb-4 mx-auto md:hidden"></div>
+                    <h4 className="text-xl font-bold text-white group-hover:text-cyan-400">High School</h4>
+                    <p className="text-gray-400 font-mono text-sm mt-2">Advanced Level</p>
+                    <div className="mt-4 inline-block px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30">2018 - 2021</div>
+                  </CyberCard>
+                </div>
+
+                {/* University */}
+                <div className="relative group">
+                  <div className="w-6 h-6 rounded-full bg-black border-4 border-cyan-500 absolute -top-11 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 hidden md:block group-hover:bg-cyan-500 transition-colors"></div>
+                  <CyberCard className="hover:-translate-y-2 transition-transform text-center md:text-left">
+                    <div className="w-4 h-4 rounded-full bg-gray-600 mb-4 mx-auto md:hidden"></div>
+                    <h4 className="text-xl font-bold text-white group-hover:text-cyan-400">University of Jaffna</h4>
+                    <p className="text-gray-400 font-mono text-sm mt-2">BSc (Hons) in Computer Science</p>
+                    <div className="mt-4 inline-block px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-mono rounded-full border border-blue-500/30">2022 - Present</div>
+                  </CyberCard>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* PROJECTS */}
         <section id="projects" className="min-h-screen py-20 px-4 relative">
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
@@ -368,8 +427,8 @@ export default function Portfolio() {
 
             {/* Project Filter Controls */}
             <div className="flex justify-center mb-12">
-              <div className="flex gap-4">
-                {["All", "Individual", "Group"].map((filter) => (
+              <div className="flex gap-4 flex-wrap justify-center">
+                {["All", "Individual", "Group", "Open Source"].map((filter) => (
                   <button
                     key={filter}
                     onClick={() => setProjectFilter(filter)}
@@ -428,6 +487,30 @@ export default function Portfolio() {
                   status: "DEPLOYED",
                   category: "Individual"
                 },
+                {
+                  title: "React Documentation (Open Source)",
+                  desc: "Contributed to the core React documentation by fixing typos, improving examples, and translating pages to support the global developer community.",
+                  tech: ["Markdown", "React", "Git"],
+                  github: "https://github.com/reactjs/react.dev",
+                  image: "/pr1.png",
+                  status: "MERGED",
+                  category: "Open Source",
+                  badges: [
+                    { name: "Top Contributor", link: "https://github.com/reactjs/react.dev" }
+                  ]
+                },
+                {
+                  title: "Next.js Examples (Open Source)",
+                  desc: "Added new boilerplate examples for implementing secure authentication patterns using standard Web APIs inside Next.js 14 App Router.",
+                  tech: ["Next.js", "TypeScript"],
+                  github: "https://github.com/vercel/next.js",
+                  image: "/pr2.png",
+                  status: "MERGED",
+                  category: "Open Source",
+                  badges: [
+                    { name: "Auth Contributor", link: "https://github.com/vercel/next.js" }
+                  ]
+                },
               ]
                 .filter(project => projectFilter === "All" || project.category === projectFilter)
                 .map((project, idx) => (
@@ -458,8 +541,25 @@ export default function Portfolio() {
                         {project.desc}
                       </p>
 
+                      {project.badges && (
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.badges.map((badge, i) => (
+                            <a 
+                              key={i} 
+                              href={badge.link} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="px-2 py-1 bg-gradient-to-r from-cyan-900/50 to-blue-900/50 border border-cyan-500/50 text-cyan-300 text-[10px] font-mono uppercase tracking-wider rounded flex items-center gap-1 hover:border-cyan-400 hover:text-cyan-200 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.1)]"
+                            >
+                              <Award size={10} className="text-cyan-400" />
+                              {badge.name}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+
                       <div className="mt-auto pt-4">
-                        <div className="flex flex-wrap gap-2 mb-6 h-16 overflow-hidden content-start">
+                        <div className="flex flex-wrap gap-2 mb-6 min-h-[4rem] content-start">
                           {project.tech.map((t, i) => (
                             <span key={i} className="px-2 py-1 text-xs font-mono text-blue-300 bg-blue-900/20 border border-blue-900/50 rounded">
                               {t}
@@ -593,73 +693,93 @@ export default function Portfolio() {
             <SectionTitle icon={Globe}>Leadership & Volunteer</SectionTitle>
 
             <div className="space-y-16 mt-12">
-              {/* Leadership Section */}
+              {/* Leadership Section - Vertical Timeline */}
               <div>
-                <div className="flex items-center gap-4 mb-8">
+                <div className="flex items-center gap-4 mb-12">
                   <div className="p-3 bg-cyan-900/30 rounded-lg border border-cyan-500/30">
                     <Shield className="text-cyan-400 w-6 h-6" />
                   </div>
-                  <h3 className="text-3xl font-bold text-white font-mono">Leadership</h3>
+                  <h3 className="text-3xl font-bold text-white font-mono">Leadership Ladder</h3>
                   <div className="h-px flex-grow bg-gradient-to-r from-cyan-500/30 to-transparent ml-4"></div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="relative border-l-2 border-gray-800 ml-4 md:ml-6 space-y-12">
+                  
                   {/* Item 1 */}
-                  <CyberCard className="p-8 border-t-4 border-t-cyan-500 hover:-translate-y-2 transition-transform duration-300 group">
-                    <div className="flex justify-between items-start mb-6">
-                      <h4 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">AWS Cloud Club - UOJ</h4>
-                      <span className="px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30 shrink-0 ml-2">Current</span>
-                    </div>
-
-                    <div className="mt-4 p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
-                      <p className="text-cyan-400 font-bold flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div> Media and Communication Lead</p>
-                    </div>
-                  </CyberCard>
+                  <div className="relative pl-8 md:pl-12 group">
+                    <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
+                    <div className="absolute -left-1 top-[26px] w-8 h-px bg-cyan-500/50 hidden md:block"></div>
+                    <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
+                        <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">AWS Cloud Club - UOJ</h4>
+                        <span className="self-start px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30">Current</span>
+                      </div>
+                      <div className="p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
+                        <p className="text-cyan-400 font-bold flex items-center gap-3">
+                          <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span> 
+                          Media and Communication Lead
+                        </p>
+                      </div>
+                    </CyberCard>
+                  </div>
 
                   {/* Item 2 */}
-                  <CyberCard className="p-8 border-t-4 border-t-cyan-500 hover:-translate-y-2 transition-transform duration-300 group">
-                    <div className="flex justify-between items-start mb-6">
-                      <h4 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE SLSAC</h4>
-                      <span className="px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30 shrink-0 ml-2">Current</span>
-                    </div>
-                    <div className="mt-4 p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
-                      <p className="text-cyan-400 font-bold flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div> Volunteer Management Coordinator</p>
-                    </div>
-                  </CyberCard>
+                  <div className="relative pl-8 md:pl-12 group">
+                    <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
+                    <div className="absolute -left-1 top-[26px] w-8 h-px bg-cyan-500/50 hidden md:block"></div>
+                    <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
+                        <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE SLSAC</h4>
+                        <span className="self-start px-3 py-1 bg-cyan-900/30 text-cyan-400 text-xs font-mono rounded-full border border-cyan-500/30">Current</span>
+                      </div>
+                      <div className="p-4 bg-black/50 rounded-lg border border-gray-800 group-hover:border-cyan-500/30 transition-colors">
+                        <p className="text-cyan-400 font-bold flex items-center gap-3">
+                          <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span> 
+                          Volunteer Management Coordinator
+                        </p>
+                      </div>
+                    </CyberCard>
+                  </div>
 
                   {/* Item 3 */}
-                  <CyberCard className="p-8 border-t-4 border-t-cyan-500 md:col-span-2 hover:-translate-y-2 transition-transform duration-300 group">
-                    <div className="flex justify-between items-start mb-6">
-                      <h4 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE Student Branch - University of Jaffna</h4>
-                      <span className="px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-mono rounded-full border border-blue-500/30 shrink-0 ml-2">2024 - 2026</span>
-                    </div>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="p-4 bg-black/50 rounded-lg border border-cyan-500/30 relative overflow-hidden">
-                        <div className="absolute left-0 top-0 w-1 h-full bg-cyan-500"></div>
-                        <p className="text-cyan-400 font-bold">Chairperson</p>
-                        <p className="text-gray-500 text-xs font-mono mt-1">2025 - 2026</p>
+                  <div className="relative pl-8 md:pl-12 group">
+                    <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-blue-500 group-hover:bg-blue-500 transition-colors"></div>
+                    <div className="absolute -left-1 top-[26px] w-8 h-px bg-blue-500/50 hidden md:block"></div>
+                    <CyberCard className="p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+                        <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">IEEE Student Branch - University of Jaffna</h4>
+                        <span className="self-start px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-mono rounded-full border border-blue-500/30">2024 - 2026</span>
                       </div>
-                      <div className="p-4 bg-black/50 rounded-lg border border-gray-800 relative overflow-hidden">
-                        <div className="absolute left-0 top-0 w-1 h-full bg-gray-600"></div>
-                        <p className="text-gray-300 font-bold">Design Team Member</p>
-                        <p className="text-gray-500 text-xs font-mono mt-1">2024 - 2025</p>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="p-4 bg-black/50 rounded-lg border border-cyan-500/30 relative overflow-hidden group/item">
+                          <div className="absolute left-0 top-0 w-1 h-full bg-cyan-500 group-hover/item:w-full transition-all duration-500 opacity-10"></div>
+                          <div className="absolute left-0 top-0 w-1 h-full bg-cyan-500"></div>
+                          <p className="text-cyan-400 font-bold relative z-10">Chairperson</p>
+                          <p className="text-gray-500 text-xs font-mono mt-1 relative z-10">2025 - 2026</p>
+                        </div>
+                        <div className="p-4 bg-black/50 rounded-lg border border-gray-800 relative overflow-hidden group/item">
+                          <div className="absolute left-0 top-0 w-1 h-full bg-gray-600 group-hover/item:w-full transition-all duration-500 opacity-10"></div>
+                          <div className="absolute left-0 top-0 w-1 h-full bg-gray-600"></div>
+                          <p className="text-gray-300 font-bold relative z-10">Design Team Member</p>
+                          <p className="text-gray-500 text-xs font-mono mt-1 relative z-10">2024 - 2025</p>
+                        </div>
                       </div>
-                    </div>
-                  </CyberCard>
+                    </CyberCard>
+                  </div>
                 </div>
               </div>
 
-              {/* Volunteer Section */}
-              <div className="pt-8">
-                <div className="flex items-center gap-4 mb-8">
+              {/* Volunteer Section - Vertical Timeline */}
+              <div className="pt-16">
+                <div className="flex items-center gap-4 mb-12">
                   <div className="p-3 bg-blue-900/30 rounded-lg border border-blue-500/30">
                     <User className="text-blue-400 w-6 h-6" />
                   </div>
-                  <h3 className="text-3xl font-bold text-white font-mono">Volunteer</h3>
+                  <h3 className="text-3xl font-bold text-white font-mono">Volunteer Journey</h3>
                   <div className="h-px flex-grow bg-gradient-to-r from-blue-500/30 to-transparent ml-4"></div>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="relative border-l-2 border-gray-800 ml-4 md:ml-6 space-y-8">
                   {[
                     { event: "YarlInsight 2.0", role: "Event Chair", org: "IEEE-SB-UoJ" },
                     { event: "JamborIEEE 2025", role: "Vice Chair - Design", org: "IEEE SLSAC" },
@@ -667,15 +787,16 @@ export default function Portfolio() {
                     { event: "IEEEXtreme 18.0 & YarlXtreme", role: "Public Visibility Team Lead", org: "IEEE-SB-UoJ" },
                     { event: "YarlInsight 1.0", role: "Public Visibility Team Member", org: "IEEE-SB-UoJ" }
                   ].map((vol, idx) => (
-                    <CyberCard key={idx} className="p-6 border border-gray-800 hover:border-blue-500/50 hover:bg-blue-900/10 transition-all duration-300 flex flex-col h-full group">
-                      <div className="mb-4">
-                        <p className="text-blue-400 font-mono text-sm mb-2 opacity-80 group-hover:opacity-100">{vol.role}</p>
-                        <h4 className="text-lg font-bold text-white leading-tight group-hover:text-blue-300 transition-colors">{vol.event}</h4>
-                      </div>
-                      <div className="mt-auto pt-4 border-t border-gray-800">
+                    <div key={idx} className="relative pl-8 md:pl-12 group">
+                      <div className="absolute -left-[9px] top-5 w-4 h-4 rounded-full bg-black border-2 border-blue-500 group-hover:bg-blue-500 transition-colors"></div>
+                      <CyberCard className="p-6 border border-gray-800 hover:border-blue-500/50 hover:bg-blue-900/10 transition-all duration-300">
+                        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-2">
+                          <h4 className="text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors">{vol.event}</h4>
+                          <p className="text-blue-400 font-mono text-sm">{vol.role}</p>
+                        </div>
                         <p className="text-gray-500 text-xs font-mono uppercase tracking-wider">{vol.org}</p>
-                      </div>
-                    </CyberCard>
+                      </CyberCard>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -707,9 +828,12 @@ export default function Portfolio() {
                   <Mail size={20} />
                   Send Email
                 </a>
-                <div className="flex gap-4">
-                  <a href="https://github.com/bhagyasandakelum" className="text-gray-400 hover:text-cyan-400 transition-colors"><Github size={24} /></a>
-                  <a href="https://www.linkedin.com/in/bhagyaslive/" className="text-gray-400 hover:text-cyan-400 transition-colors"><Linkedin size={24} /></a>
+                <div className="flex gap-4 flex-wrap justify-center mt-4 md:mt-0">
+                  <a href="https://github.com/bhagyasandakelum" className="text-gray-400 hover:text-cyan-400 transition-colors" title="GitHub"><Github size={24} /></a>
+                  <a href="https://www.linkedin.com/in/bhagyaslive/" className="text-gray-400 hover:text-cyan-400 transition-colors" title="LinkedIn"><Linkedin size={24} /></a>
+                  <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Twitter"><Twitter size={24} /></a>
+                  <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Instagram"><Instagram size={24} /></a>
+                  <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Facebook"><Facebook size={24} /></a>
                 </div>
               </div>
             </motion.div>

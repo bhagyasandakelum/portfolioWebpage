@@ -431,6 +431,26 @@ export default function Portfolio() {
               ) : (
                 [
                   {
+                    title: "Runsheet – Event Flow Management",
+                    desc: "A comprehensive event management web tool designed for event chairs and organizing teams to manage the entire event flow in real time. Features minute-by-minute rundown tracking, role coordination, and dynamic stage scheduling.",
+                    tech: ["Next.js", "TailwindCSS", "Node.js", "Supabase", "Prisma"],
+                    github: "https://github.com/bhagyasandakelum/runsheet",
+                    link: "https://run-sheet-eight.vercel.app/",
+                    image: "/runsheet.png",
+                    status: "LIVE",
+                    category: "Individual"
+                  },
+                  {
+                    title: "HashCS – Computer Science Blog",
+                    desc: "A personal computer science blog platform to share technical writeups, systems knowledge, and programming insights. Powered by a headless CMS architecture with dynamic content rendering and responsive reading experience.",
+                    tech: ["Next.js", "TailwindCSS", "Hygraph", "GraphQL"],
+                    github: "https://github.com/bhagyasandakelum/hashcs",
+                    link: "https://hashcs.vercel.app",
+                    image: "/hashcs.png",
+                    status: "LIVE",
+                    category: "Individual"
+                  },
+                  {
                     title: "WalletX - Master Your Money",
                     desc: "A comprehensive personal finance manager that tracks daily expenses, visualizes spending patterns, and helps users stay within budget. Developed as a high-performance individual project with a focus on premium UI and data security.",
                     tech: ["React Native", "SQLite", "Local Storage"],
@@ -438,6 +458,15 @@ export default function Portfolio() {
                     playStore: "https://play.google.com/store/apps/details?id=com.bhagyaslive.walletx", // Replace with your actual Play Store link
                     image: "/pr4.png",
                     status: "LIVE",
+                    category: "Individual"
+                  },
+                  {
+                    title: "Shieldro – Real-Time Website Security Analyzer",
+                    desc: "A Chrome extension that detects insecure HTTP, mixed content, phishing patterns, and missing security headers, mapping findings to OWASP Top 10 and visualizing risk through a modern security wheel. All analysis runs locally in the browser.",
+                    tech: ["Manifest V3", "JavaScript", "CSS"],
+                    github: "https://github.com/bhagyasandakelum/shieldro",
+                    image: "/pr3.png",
+                    status: "DEPLOYED",
                     category: "Individual"
                   },
                   {
@@ -457,39 +486,6 @@ export default function Portfolio() {
                     image: "/pr2.png",
                     status: "DEPLOYED",
                     category: "Group"
-                  },
-                  {
-                    title: "Shieldro – Real-Time Website Security Analyzer",
-                    desc: "A Chrome extension that detects insecure HTTP, mixed content, phishing patterns, and missing security headers, mapping findings to OWASP Top 10 and visualizing risk through a modern security wheel. All analysis runs locally in the browser.",
-                    tech: ["Manifest V3", "JavaScript", "CSS"],
-                    github: "https://github.com/bhagyasandakelum/shieldro",
-                    image: "/pr3.png",
-                    status: "DEPLOYED",
-                    category: "Individual"
-                  },
-                  {
-                    title: "React Documentation (Open Source)",
-                    desc: "Contributed to the core React documentation by fixing typos, improving examples, and translating pages to support the global developer community.",
-                    tech: ["Markdown", "React", "Git"],
-                    github: "https://github.com/reactjs/react.dev",
-                    image: "/pr1.png",
-                    status: "MERGED",
-                    category: "Open Source",
-                    badges: [
-                      { name: "Top Contributor", link: "https://github.com/reactjs/react.dev" }
-                    ]
-                  },
-                  {
-                    title: "Next.js Examples (Open Source)",
-                    desc: "Added new boilerplate examples for implementing secure authentication patterns using standard Web APIs inside Next.js 14 App Router.",
-                    tech: ["Next.js", "TypeScript"],
-                    github: "https://github.com/vercel/next.js",
-                    image: "/pr2.png",
-                    status: "MERGED",
-                    category: "Open Source",
-                    badges: [
-                      { name: "Auth Contributor", link: "https://github.com/vercel/next.js" }
-                    ]
                   },
                 ]
                   .filter(project => projectFilter === "All" || project.category === projectFilter)
@@ -560,6 +556,18 @@ export default function Portfolio() {
                                 <span>GitHub</span>
                               </a>
                             )}
+                            {project.link && (
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest border border-cyan-500/30 hover:border-cyan-500 px-3 py-2 rounded-lg bg-cyan-900/10 shadow-[0_0_10px_rgba(0,243,255,0.1)]"
+                                title="Visit Live Site"
+                              >
+                                <ExternalLink size={18} className="shrink-0" />
+                                <span>Live Demo</span>
+                              </a>
+                            )}
                             {project.playStore && (
                               <a
                                 href={project.playStore}
@@ -570,16 +578,6 @@ export default function Portfolio() {
                               >
                                 <Play size={18} fill="currentColor" className="shrink-0" />
                                 <span>Play Store</span>
-                              </a>
-                            )}
-                            {!project.github && !project.playStore && project.link && (
-                              <a
-                                href={project.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest"
-                              >
-                                View Project <ExternalLink size={14} className="shrink-0" />
                               </a>
                             )}
                           </div>

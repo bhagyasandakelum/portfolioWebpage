@@ -29,7 +29,81 @@ import {
   Facebook
 } from "lucide-react";
 
-// --- Matrix Rain Effect Component ---
+// --- Cyber "B" Logo Mark ---
+const CyberBLogo = ({ size = 40 }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 64 64"
+    width={size}
+    height={size}
+    aria-label="Bhagya Sandakelum – Cybersecurity & Development"
+  >
+    <defs>
+      <filter id="logoGlow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+        <feMerge>
+          <feMergeNode in="coloredBlur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+      <linearGradient id="logoBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#050e1a" />
+        <stop offset="100%" stopColor="#020609" />
+      </linearGradient>
+      <linearGradient id="logoCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#00f3ff" />
+        <stop offset="100%" stopColor="#0ea5e9" />
+      </linearGradient>
+    </defs>
+
+    {/* Hexagon bg */}
+    <polygon
+      points="32,2 58,16 58,48 32,62 6,48 6,16"
+      fill="url(#logoBgGrad)"
+      stroke="#00f3ff"
+      strokeWidth="1.6"
+      opacity="0.95"
+      filter="url(#logoGlow)"
+    />
+    {/* Inner ring */}
+    <polygon
+      points="32,7 53,19 53,45 32,57 11,45 11,19"
+      fill="none"
+      stroke="#00f3ff"
+      strokeWidth="0.4"
+      opacity="0.25"
+    />
+
+    {/* Corner circuit dots */}
+    <circle cx="32" cy="3.5" r="1.3" fill="#00f3ff" opacity="0.75" />
+    <circle cx="32" cy="60.5" r="1.3" fill="#00f3ff" opacity="0.75" />
+
+    {/* Left circuit trace */}
+    <line x1="10" y1="25" x2="17" y2="25" stroke="#00f3ff" strokeWidth="0.7" opacity="0.45" />
+    <circle cx="17" cy="25" r="1.1" fill="#00f3ff" opacity="0.55" />
+
+    {/* Right circuit trace */}
+    <line x1="47" y1="40" x2="54" y2="40" stroke="#00f3ff" strokeWidth="0.7" opacity="0.45" />
+    <circle cx="47" cy="40" r="1.1" fill="#00f3ff" opacity="0.55" />
+
+    {/* "B" glyph */}
+    <text
+      x="32"
+      y="44"
+      fontFamily="'Courier New', Courier, monospace"
+      fontWeight="900"
+      fontSize="35"
+      textAnchor="middle"
+      fill="url(#logoCyanGrad)"
+      filter="url(#logoGlow)"
+    >
+      B
+    </text>
+
+    {/* Underline accent */}
+    <rect x="20" y="47.5" width="24" height="1.6" rx="0.8" fill="#00f3ff" opacity="0.45" />
+  </svg>
+);
 const MatrixRain = () => {
   const canvasRef = useRef(null);
 
@@ -87,10 +161,10 @@ const SectionTitle = ({ children, icon: Icon }) => (
     initial={{ opacity: 0, x: -20 }}
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
-    className="text-3xl md:text-5xl font-bold mb-12 flex items-center justify-center gap-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"
+    className="text-3xl md:text-4xl font-bold mb-12 flex items-center justify-center gap-3 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
   >
-    {Icon && <Icon className="w-8 h-8 md:w-12 md:h-12 text-cyan-400" />}
-    <span className="font-mono tracking-tighter">{"<"}{children}{"/>"}</span>
+    {Icon && <Icon className="w-7 h-7 md:w-9 md:h-9 text-cyan-400" />}
+    <span className="font-mono tracking-tight">{"<"}{children}{"/>"}</span>
   </motion.h2>
 );
 
@@ -141,9 +215,9 @@ export default function Portfolio() {
   const sections = [
     { id: "about", label: "Home", icon: User },
     { id: "projects", label: "Projects", icon: Code },
-    //{ id: "education", label: "Education", icon: BookOpen },
+    { id: "education", label: "Education", icon: BookOpen },
     { id: "certificates", label: "Certificates", icon: Award },
-    { id: "leadership", label: "Leadership & Volunteering", icon: Globe },
+    { id: "leadership", label: "Leadership", icon: Globe },
     { id: "blog", label: "Blog", icon: FileText, external: "https://hashcs.vercel.app" },
     { id: "contact", label: "Contact", icon: Mail },
   ];
@@ -170,10 +244,15 @@ export default function Portfolio() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-xl md:text-2xl font-bold font-mono text-cyan-400 flex items-center gap-2"
+              className="flex items-center gap-3 cursor-pointer group"
+              onClick={() => scrollToSection("about")}
+              title="Bhagya Sandakelum – Cybersecurity & Development"
             >
-              <Terminal size={20} />
-              bhagyaslive
+              <CyberBLogo size={38} />
+              <div className="hidden sm:flex flex-col leading-tight">
+                <span className="text-sm font-bold font-mono text-white tracking-wide">bhagya</span>
+                <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.2em] leading-none">Security · Dev</span>
+              </div>
             </motion.div>
 
             {/* Desktop Nav */}
@@ -240,9 +319,9 @@ export default function Portfolio() {
         </AnimatePresence>
       </nav>
 
-      {/* Vertical Side Navigation (Backwards) */}
+      {/* Vertical Side Navigation */}
       <div className="hidden xl:flex fixed right-4 top-1/2 -translate-y-1/2 flex-col gap-6 z-40 items-center">
-        {[...sections].reverse().map((section) => (
+        {sections.map((section) => (
           <button
             key={section.id}
             onClick={() => scrollToSection(section.id)}
@@ -310,24 +389,28 @@ export default function Portfolio() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <p className="font-mono text-cyan-400 mb-4 inline-flex items-center gap-2">
+                  <p className="font-mono text-cyan-400 mb-4 inline-flex items-center gap-2 text-sm">
                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    Available for Opportunities
+                    Open for opportunities · 2027
                   </p>
-                  <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight">
-                    Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Bhagya Sandakelum</span>
+                  <h1 className="text-4xl md:text-6xl font-bold mb-5 text-white tracking-tight leading-tight">
+                    Hi, I'm{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                      Bhagya Sandakelum
+                    </span>
                   </h1>
-                  <p className="text-xl md:text-2xl text-gray-400 mb-8 font-light border-l-4 border-cyan-500 pl-4">
-                    Aspiring Security Engineer<br /> <span className="text-cyan-400">Computer Science Undergraduate</span>
+                  <p className="text-lg md:text-xl text-gray-400 mb-6 font-light border-l-4 border-cyan-500 pl-4 leading-relaxed">
+                    Aspiring Security Engineer<br />
+                    <span className="text-cyan-400">Computer Science Undergraduate</span>
                   </p>
-                  <p className="text-gray-400 mb-8 leading-relaxed max-w-lg">
-                    Full stack developer, cybersecurity enthusiast, and IEEE volunteer passionate about building secure, scalable applications and driving impactful tech communities.
+                  <p className="text-gray-400 mb-8 leading-relaxed max-w-lg text-sm md:text-base">
+                    Full stack developer, cybersecurity enthusiast, and IEEE volunteer. Passionate about building secure, scalable applications and driving impactful tech communities.
                   </p>
 
                   <div className="flex flex-wrap gap-4 mb-8">
                     {[
                       { icon: Github, link: "https://github.com/bhagyasandakelum" },
-                      { icon: Linkedin, link: "https://www.linkedin.com/in/bhagyaslive/" },
+                      { icon: Linkedin, link: "https://www.linkedin.com/in/bhagyasandakelum/" },
                       { icon: Mail, link: "mailto:bhagyasandakelum02@gmail.com" },
                     ].map((item, index) => (
                       <a
@@ -345,19 +428,19 @@ export default function Portfolio() {
                   <div className="flex flex-wrap gap-4">
                     <button
                       onClick={() => scrollToSection("contact")}
-                      className="px-8 py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono rounded hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center gap-2 group"
+                      className="px-6 py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono text-sm rounded-lg hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center gap-2 group"
                     >
-                      <Mail size={18} />
+                      <Mail size={16} />
                       <span>Contact Me</span>
                     </button>
                     <a
-                      href="https://drive.google.com/file/d/1Md1bVV6XdaCQzzZLLza8BL4ylpVJLjW8/view?usp=sharing" // Replace with your Google Drive PDF link
+                      href="https://drive.google.com/file/d/1Md1bVV6XdaCQzzZLLza8BL4ylpVJLjW8/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-8 py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono rounded hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center gap-2 group"
+                      className="px-6 py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono text-sm rounded-lg hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center gap-2 group"
                     >
-                      <FileText size={18} />
-                      <span>Resume</span>
+                      <FileText size={16} />
+                      <span>View Resume</span>
                     </a>
                   </div>
                 </motion.div>
@@ -449,7 +532,7 @@ export default function Portfolio() {
               ) : (
                 [
                   {
-                    title: "RunSheet – Cloud Native Event Management & Team Cordination Tool",
+                    title: "RunSheet – Cloud-Native Event Management & Team Coordination Tool",
                     desc: "A comprehensive event management web tool designed for event chairs and organizing teams to manage the entire event flow in real time. Features minute-by-minute rundown tracking, role coordination, and dynamic stage scheduling.",
                     features: [
                       "Real-time minute-by-minute rundown tracking for live events",
@@ -730,7 +813,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* CERTIFICATES */}
+        {/* EDUCATION */}
         <section id="education" className="min-h-[80vh] py-20 px-4 relative flex items-center">
           {/* Background effects */}
           <div className="absolute top-1/2 left-0 w-full h-full bg-gradient-to-b from-blue-900/5 to-transparent pointer-events-none -translate-y-1/2" />
@@ -745,21 +828,25 @@ export default function Portfolio() {
               <div className="absolute top-0 left-0 w-1/2 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 hidden md:block shadow-[0_0_15px_rgba(0,243,255,0.5)]"></div>
 
               {/* Timeline Dots */}
-              <div className="absolute -top-[10px] left-0 hidden md:block w-6 h-6 rounded-full bg-black border-4 border-blue-500 z-10 transition-colors duration-500 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
-              <div className="absolute -top-[10px] left-1/2 hidden md:block w-6 h-6 rounded-full bg-black border-4 border-cyan-500 z-10 transition-colors duration-500 shadow-[0_0_20px_rgba(0,243,255,0.5)]"></div>
+              <div className="absolute -top-[10px] left-0 hidden md:block w-6 h-6 rounded-full bg-black border-4 border-blue-500 z-10 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+              <div className="absolute -top-[10px] left-1/2 hidden md:block w-6 h-6 rounded-full bg-black border-4 border-cyan-500 z-10 shadow-[0_0_20px_rgba(0,243,255,0.5)]"></div>
 
               <div className="grid md:grid-cols-2 gap-16 md:gap-8 relative z-10">
                 {/* University */}
                 <div className="relative group flex flex-col items-center md:items-start text-center md:text-left">
                   <div className="md:pr-8 hover:-translate-y-2 transition-transform duration-500 flex flex-col items-center md:items-start w-full">
                     <div className="w-4 h-4 rounded-full bg-blue-500 mb-4 md:hidden"></div>
-                    <p className="text-blue-400 font-mono text-sm uppercase tracking-wider mb-2">BSc (Hons) in Computer Science</p>
+                    <div className="text-blue-400 mb-4 flex justify-center md:justify-start">
+                      <BookOpen size={28} />
+                    </div>
+                    <p className="text-blue-400 font-mono text-sm uppercase tracking-wider mb-1">BSc (Hons) in Computer Science</p>
                     <h4 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">University of Jaffna</h4>
-                    <p className="text-gray-400 mt-4 text-sm max-w-sm">Focusing on Cybersecuity.</p>
-                    <p className="text-gray-300 font-bold mt-2 font-mono text-sm">GPA: 3.3/4.0(57/120)</p>
+                    <p className="text-gray-300 font-semibold mt-3 font-mono text-sm">
+                      GPA: 3.3 / 4.0 &nbsp;·&nbsp; 57 / 120 Credits
+                    </p>
                     <div className="mt-6 inline-flex items-center gap-2 px-4 py-1.5 bg-blue-900/20 text-blue-300 text-xs font-mono rounded-full border border-blue-500/30 group-hover:border-blue-500 transition-colors">
                       <Zap size={12} className="text-blue-500" />
-                      2023 - Present
+                      2023 – Present
                     </div>
                   </div>
                 </div>
@@ -771,11 +858,14 @@ export default function Portfolio() {
                     <div className="text-cyan-400 mb-4 flex justify-center md:justify-start">
                       <Award size={28} />
                     </div>
+                    <p className="text-cyan-400 font-mono text-sm uppercase tracking-wider mb-1">G.C.E. Advanced Level – Physical Science &amp; ICT</p>
                     <h4 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">DS Senanayake National School</h4>
-                    <p className="text-gray-400 mt-4 text-sm max-w-sm">Foundation in science, mathematics & ICT.</p>
+                    <p className="text-gray-400 mt-4 text-sm max-w-sm leading-relaxed">
+                      Foundation in physics, mathematics, and information technology.
+                    </p>
                     <div className="mt-6 inline-flex items-center gap-2 px-4 py-1.5 bg-cyan-900/20 text-cyan-300 text-xs font-mono rounded-full border border-cyan-500/30 group-hover:border-cyan-500 transition-colors">
                       <Zap size={12} className="text-cyan-500" />
-                      2018 - 2020
+                      2018 – 2020
                     </div>
                   </div>
                 </div>
@@ -798,39 +888,42 @@ export default function Portfolio() {
                   name: "Introduction to Cybersecurity",
                   issuer: "Cisco Networking Academy",
                   year: "2024",
-                  id: "CISCO-CYB-24",
+                  id: "CISCO-CYB-2024",
                   icon: Shield
                 },
                 {
-                  name: "AI/ML Engineer - Stage 1",
+                  name: "AI/ML Engineer – Stage 1",
                   issuer: "SLIIT",
                   year: "2025",
-                  id: "SLIIT-AIML-25",
+                  id: "SLIIT-AIML-2025",
                   icon: Cpu
                 },
                 {
                   name: "Problem Solving (Basic)",
                   issuer: "HackerRank",
                   year: "2026",
-                  id: "HR-PSB-26",
+                  id: "HR-PSB-2026",
                   icon: Terminal
                 },
                 {
                   name: "Postman API Expert",
                   issuer: "Postman",
-                  id: "API-SEC-01",
+                  year: "–",
+                  id: "POSTMAN-API",
                   icon: Globe
                 },
                 {
                   name: "Data Science Foundation",
                   issuer: "Great Learning",
-                  id: "DATA-SCI-02",
+                  year: "–",
+                  id: "GL-DSF",
                   icon: Database
                 },
                 {
                   name: "SEO Optimization",
-                  issuer: "Hubspot Academy",
-                  id: "WEB-OPT-03",
+                  issuer: "HubSpot Academy",
+                  year: "–",
+                  id: "HS-SEO",
                   icon: Code
                 },
               ].map((cert, idx) => (
@@ -838,7 +931,7 @@ export default function Portfolio() {
                   key={idx}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.1 }}
+                  transition={{ delay: idx * 0.08 }}
                   whileHover={{ y: -5 }}
                 >
                   <div className="h-full bg-gray-900/30 border border-gray-800 hover:border-cyan-500/50 p-6 rounded-xl transition-all duration-300 group relative overflow-hidden flex flex-col justify-between">
@@ -848,20 +941,20 @@ export default function Portfolio() {
                     <div>
                       <div className="flex justify-between items-start mb-4">
                         <div className="p-2 w-12 h-12 bg-blue-900/20 rounded-lg flex items-center justify-center text-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,243,255,0.3)] transition-shadow">
-                          <Award size={24} />
+                          <cert.icon size={24} />
                         </div>
-                        {cert.year && (
+                        {cert.year && cert.year !== "–" && (
                           <span className="px-2.5 py-1 bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono rounded-full shadow-[0_0_10px_rgba(0,243,255,0.1)]">
                             {cert.year}
                           </span>
                         )}
                       </div>
-                      <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">{cert.name}</h3>
+                      <h3 className="text-base font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors leading-snug">{cert.name}</h3>
                       <p className="text-sm text-gray-500 mb-4">{cert.issuer}</p>
                     </div>
                     <div className="flex justify-between items-center text-xs font-mono text-gray-600 border-t border-gray-800 pt-4 mt-auto">
                       <span>ID: {cert.id}</span>
-                      <span className="text-cyan-600 group-hover:text-cyan-400">VERIFIED</span>
+                      <span className="text-cyan-600 group-hover:text-cyan-400 transition-colors">VERIFIED ✓</span>
                     </div>
                   </div>
                 </motion.div>
@@ -875,7 +968,7 @@ export default function Portfolio() {
           <div className="absolute top-1/3 left-0 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-6xl mx-auto relative z-10">
-            <SectionTitle icon={Globe}>Leadership & Volunteering</SectionTitle>
+            <SectionTitle icon={Globe}>Leadership &amp; Volunteering</SectionTitle>
 
             {/* Journey Filter Controls */}
             <div className="flex justify-center mt-12 mb-16">
@@ -1000,37 +1093,98 @@ export default function Portfolio() {
           </div>
         </section>
         {/* CONTACT */}
-        <section id="contact" className="min-h-[70vh] flex items-center py-20 px-4 relative">
-          <div className="max-w-4xl mx-auto w-full text-center">
+        <section id="contact" className="py-24 px-4 relative overflow-hidden">
+          {/* Background layers */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/10 to-black pointer-events-none" />
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-cyan-900/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-10 right-1/4 w-64 h-64 bg-blue-900/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-5xl mx-auto relative z-10">
+
+            {/* Top — Logo + Status */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-8 md:p-12 relative"
+              transition={{ duration: 0.6 }}
+              className="flex flex-col items-center mb-14"
             >
-
-              <h2 className="text-4xl font-bold text-white mb-6">Let's Connect</h2>
-              <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-                Looking for a dedicated cybersecurity engineer or need help with a project?
-                Feel free to reach out.
-              </p>
-
-              <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-                <a
-                  href="mailto:bhagyasandakelum02@gmail.com"
-                  className="px-8 py-4 bg-cyan-600 text-white rounded font-bold hover:bg-cyan-500 transition-colors shadow-[0_0_20px_rgba(0,149,255,0.3)] flex items-center gap-2"
-                >
-                  <Mail size={20} />
-                  Send Email
-                </a>
-                <div className="flex gap-4 flex-wrap justify-center mt-4 md:mt-0">
-                  <a href="https://github.com/bhagyasandakelum" className="text-gray-400 hover:text-cyan-400 transition-colors" title="GitHub"><Github size={24} /></a>
-                  <a href="https://www.linkedin.com/in/bhagyasandakelum/" className="text-gray-400 hover:text-cyan-400 transition-colors" title="LinkedIn"><Linkedin size={24} /></a>
-                  <a href="https://x.com/bhagyslive" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Twitter"><Twitter size={24} /></a>
-                  <a href="https://www.instagram.com/bhagyaslive/" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Instagram"><Instagram size={24} /></a>
-                  <a href="https://www.facebook.com/bhagyaslive/" className="text-gray-400 hover:text-cyan-400 transition-colors" title="Facebook"><Facebook size={24} /></a>
-                </div>
+              {/* Cyber B Logo */}
+              <div className="mb-6 relative">
+                <div className="absolute inset-0 rounded-full bg-cyan-500/10 blur-2xl scale-150" />
+                <CyberBLogo size={80} />
               </div>
+
+              {/* Live status pill */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-green-950/60 border border-green-500/40 rounded-full mb-6">
+                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <span className="text-green-400 font-mono text-xs uppercase tracking-widest font-semibold">Open to Internship Opportunities · 2026</span>
+              </div>
+
+              <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight text-center mb-4">
+                Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Connect</span>
+              </h2>
+              <p className="text-gray-400 text-center max-w-xl leading-relaxed text-sm md:text-base">
+                I'm actively looking for <span className="text-cyan-400 font-semibold">software engineering</span> and <span className="text-cyan-400 font-semibold">cybersecurity internship</span> opportunities for 2026.
+                If you're hiring or want to collaborate on something meaningful, let's talk.
+              </p>
+            </motion.div>
+
+            {/* Primary CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="flex flex-col sm:flex-row justify-center gap-4 mb-12"
+            >
+              <a
+                href="mailto:bhagyasandakelum02@gmail.com"
+                className="group flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold font-mono text-sm rounded-xl hover:from-cyan-500 hover:to-blue-500 transition-all duration-300 shadow-[0_0_30px_rgba(0,243,255,0.25)] hover:shadow-[0_0_40px_rgba(0,243,255,0.4)]"
+              >
+                <Mail size={18} />
+                Send Me an Email
+              </a>
+              <a
+                href="https://drive.google.com/file/d/1Md1bVV6XdaCQzzZLLza8BL4ylpVJLjW8/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center gap-3 px-8 py-4 bg-black/60 border border-cyan-500/40 text-cyan-400 font-bold font-mono text-sm rounded-xl hover:bg-cyan-950/40 hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,243,255,0.15)]"
+              >
+                <FileText size={18} />
+                Download Resume
+              </a>
+            </motion.div>
+
+            {/* Social Row */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="flex items-center justify-center gap-2"
+            >
+              <div className="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-gray-800" />
+              <div className="flex gap-3 px-4">
+                {[
+                  { icon: Twitter, href: "https://x.com/bhagyslive", label: "X / Twitter" },
+                  { icon: Instagram, href: "https://www.instagram.com/bhagyaslive/", label: "Instagram" },
+                  { icon: Facebook, href: "https://www.facebook.com/bhagyaslive/", label: "Facebook" },
+                ].map(({ icon: Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={label}
+                    className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-800 text-gray-600 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-950/20 transition-all duration-200"
+                  >
+                    <Icon size={18} />
+                  </a>
+                ))}
+              </div>
+              <div className="h-px flex-1 max-w-24 bg-gradient-to-l from-transparent to-gray-800" />
             </motion.div>
           </div>
         </section>
@@ -1042,11 +1196,30 @@ export default function Portfolio() {
 
 
         {/* FOOTER */}
-        <footer className="py-8 bg-black border-t border-blue-900/20 text-center relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4">
-            <p className="text-gray-600 font-mono text-sm">
-              © 2026 bhagyaslive <span className="text-cyan-500">System Secure</span>
+        <footer className="py-10 bg-black border-t border-blue-900/20 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
+          <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            {/* Brand */}
+            <div className="flex items-center gap-3">
+              <CyberBLogo size={28} />
+              <span className="text-xs font-mono text-gray-600 uppercase tracking-widest">Bhagya Sandakelum</span>
+            </div>
+            {/* Copyright */}
+            <p className="text-gray-700 font-mono text-xs">
+              © 2026 · All rights reserved · <span className="text-cyan-800">System Secure</span>
             </p>
+            {/* Nav links */}
+            <div className="flex gap-4">
+              {["Projects", "Education", "Contact"].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className="text-xs font-mono text-gray-700 hover:text-cyan-500 transition-colors uppercase tracking-wider"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
           </div>
         </footer>
       </div>
@@ -1127,11 +1300,10 @@ export default function Portfolio() {
                           <button
                             key={sIdx}
                             onClick={() => setActiveScreenshotIdx(sIdx)}
-                            className={`relative h-16 w-28 rounded-lg overflow-hidden border-2 transition-all ${
-                              activeScreenshotIdx === sIdx
-                                ? "border-cyan-400 scale-105 shadow-[0_0_12px_rgba(0,243,255,0.4)] ring-1 ring-cyan-400"
-                                : "border-gray-800 opacity-60 hover:opacity-100"
-                            }`}
+                            className={`relative h-16 w-28 rounded-lg overflow-hidden border-2 transition-all ${activeScreenshotIdx === sIdx
+                              ? "border-cyan-400 scale-105 shadow-[0_0_12px_rgba(0,243,255,0.4)] ring-1 ring-cyan-400"
+                              : "border-gray-800 opacity-60 hover:opacity-100"
+                              }`}
                           >
                             <img src={shot} alt={`Thumbnail ${sIdx + 1}`} className="w-full h-full object-cover" />
                           </button>

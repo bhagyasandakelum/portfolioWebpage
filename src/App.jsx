@@ -1116,46 +1116,16 @@ export default function Portfolio() {
                 <CyberBLogo size={80} />
               </div>
 
-              {/* Live status pill */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-green-950/60 border border-green-500/40 rounded-full mb-6">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                <span className="text-green-400 font-mono text-xs uppercase tracking-widest font-semibold">Open to Internship Opportunities · 2026</span>
-              </div>
-
               <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight text-center mb-4">
                 Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Connect</span>
               </h2>
               <p className="text-gray-400 text-center max-w-xl leading-relaxed text-sm md:text-base">
-                I'm actively looking for <span className="text-cyan-400 font-semibold">software engineering</span> and <span className="text-cyan-400 font-semibold">cybersecurity internship</span> opportunities for 2026.
+                I'm actively looking for <span className="text-cyan-400 font-semibold">software engineering</span> and <span className="text-cyan-400 font-semibold">cybersecurity internship</span> opportunities for 2027.
                 If you're hiring or want to collaborate on something meaningful, let's talk.
               </p>
             </motion.div>
 
             {/* Primary CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="flex flex-col sm:flex-row justify-center gap-4 mb-12"
-            >
-              <a
-                href="mailto:bhagyasandakelum02@gmail.com"
-                className="group flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold font-mono text-sm rounded-xl hover:from-cyan-500 hover:to-blue-500 transition-all duration-300 shadow-[0_0_30px_rgba(0,243,255,0.25)] hover:shadow-[0_0_40px_rgba(0,243,255,0.4)]"
-              >
-                <Mail size={18} />
-                Send Me an Email
-              </a>
-              <a
-                href="https://drive.google.com/file/d/1Md1bVV6XdaCQzzZLLza8BL4ylpVJLjW8/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-3 px-8 py-4 bg-black/60 border border-cyan-500/40 text-cyan-400 font-bold font-mono text-sm rounded-xl hover:bg-cyan-950/40 hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,243,255,0.15)]"
-              >
-                <FileText size={18} />
-                Download Resume
-              </a>
-            </motion.div>
 
             {/* Social Row */}
             <motion.div
@@ -1168,6 +1138,9 @@ export default function Portfolio() {
               <div className="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-gray-800" />
               <div className="flex gap-3 px-4">
                 {[
+                  { icon: Mail, href: "mailto:bhagyasandakelum02@gmail.com", label: "Email" },
+                  { icon: Github, href: "https://github.com/bhagyasandakelum", label: "GitHub" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/bhagyasandakelum/", label: "LinkedIn" },
                   { icon: Twitter, href: "https://x.com/bhagyslive", label: "X / Twitter" },
                   { icon: Instagram, href: "https://www.instagram.com/bhagyaslive/", label: "Instagram" },
                   { icon: Facebook, href: "https://www.facebook.com/bhagyaslive/", label: "Facebook" },

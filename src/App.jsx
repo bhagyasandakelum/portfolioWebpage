@@ -161,10 +161,10 @@ const SectionTitle = ({ children, icon: Icon }) => (
     initial={{ opacity: 0, x: -20 }}
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
-    className="text-3xl md:text-4xl font-bold mb-12 flex items-center justify-center gap-3 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+    className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 flex items-center justify-center gap-2.5 sm:gap-3 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 text-center px-2"
   >
-    {Icon && <Icon className="w-7 h-7 md:w-9 md:h-9 text-cyan-400" />}
-    <span className="font-mono tracking-tight">{"<"}{children}{"/>"}</span>
+    {Icon && <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400 shrink-0" />}
+    <span className="font-mono tracking-tight break-words">{"<"}{children}{"/>"}</span>
   </motion.h2>
 );
 
@@ -355,12 +355,12 @@ export default function Portfolio() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
-                className="flex justify-center order-2 md:order-1"
+                className="flex justify-center order-1 md:order-1 pt-4 md:pt-0"
               >
-                <div className="relative group w-80 h-80 md:w-[450px] md:h-[450px]">
+                <div className="relative group w-56 h-56 sm:w-72 sm:h-72 md:w-[380px] md:h-[380px] lg:w-[440px] lg:h-[440px]">
                   {/* Rotating decorative rings */}
                   <div className="absolute inset-0 rounded-full border-2 border-cyan-500/30 border-dashed animate-[spin_10s_linear_infinite]" />
-                  <div className="absolute -inset-4 rounded-full border border-blue-600/20 animate-[spin_15s_linear_infinite_reverse]" />
+                  <div className="absolute -inset-3 sm:-inset-4 rounded-full border border-blue-600/20 animate-[spin_15s_linear_infinite_reverse]" />
 
                   {/* Main image container */}
                   <div className="absolute inset-0 rounded-full bg-black p-1 overflow-hidden border-2 border-cyan-500 shadow-[0_0_30px_rgba(0,243,255,0.2)]">
@@ -370,44 +370,36 @@ export default function Portfolio() {
                       className="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500"
                     />
                   </div>
-
-                  {/* Floating Tech Badge */}
-                  <motion.div
-                    animate={{ y: [-5, 5, -5] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="absolute -bottom-6 right-10 bg-black/90 border border-cyan-500 px-4 py-1 rounded-full text-cyan-400 text-xs font-mono shadow-lg"
-                  >
-                    STATUS: ACTIVE
-                  </motion.div>
                 </div>
               </motion.div>
 
               {/* Text Content */}
-              <div className="text-left order-1 md:order-2">
+              <div className="text-center md:text-left order-2 md:order-2 flex flex-col items-center md:items-start">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
+                  className="flex flex-col items-center md:items-start"
                 >
-                  <p className="font-mono text-cyan-400 mb-4 inline-flex items-center gap-2 text-sm">
+                  <p className="font-mono text-cyan-400 mb-3 sm:mb-4 inline-flex items-center gap-2 text-xs sm:text-sm">
                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                     Open for opportunities · 2027
                   </p>
-                  <h1 className="text-4xl md:text-6xl font-bold mb-5 text-white tracking-tight leading-tight">
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-5 text-white tracking-tight leading-tight">
                     Hi, I'm{" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
                       Bhagya Sandakelum
                     </span>
                   </h1>
-                  <p className="text-lg md:text-xl text-gray-400 mb-6 font-light border-l-4 border-cyan-500 pl-4 leading-relaxed">
+                  <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-5 sm:mb-6 font-light md:border-l-4 md:border-cyan-500 md:pl-4 leading-relaxed">
                     Aspiring Security Engineer<br />
-                    <span className="text-cyan-400">Computer Science Undergraduate</span>
+                    <span className="text-cyan-400 text-sm sm:text-base">Computer Science Undergraduate</span>
                   </p>
-                  <p className="text-gray-400 mb-8 leading-relaxed max-w-lg text-sm md:text-base">
-                    Full stack developer, cybersecurity enthusiast, and IEEE volunteer. Passionate about building secure, scalable applications and driving impactful tech communities.
+                  <p className="text-gray-400 mb-6 sm:mb-8 leading-relaxed max-w-lg text-xs sm:text-sm md:text-base">
+                    Full-stack developer, cybersecurity enthusiast, and IEEE volunteer. Passionate about building secure, scalable applications and driving impactful tech communities.
                   </p>
 
-                  <div className="flex flex-wrap gap-4 mb-8">
+                  <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8">
                     {[
                       { icon: Github, link: "https://github.com/bhagyasandakelum" },
                       { icon: Linkedin, link: "https://www.linkedin.com/in/bhagyasandakelum/" },
@@ -418,17 +410,17 @@ export default function Portfolio() {
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 rounded-lg border border-gray-800 bg-gray-900/50 hover:bg-cyan-900/20 hover:border-cyan-500/50 text-gray-400 hover:text-cyan-400 transition-all duration-300"
+                        className="p-2.5 sm:p-3 rounded-lg border border-gray-800 bg-gray-900/50 hover:bg-cyan-900/20 hover:border-cyan-500/50 text-gray-400 hover:text-cyan-400 transition-all duration-300"
                       >
-                        <item.icon size={24} />
+                        <item.icon size={20} className="sm:w-6 sm:h-6" />
                       </a>
                     ))}
                   </div>
 
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 w-full">
                     <button
                       onClick={() => scrollToSection("contact")}
-                      className="px-6 py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono text-sm rounded-lg hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center gap-2 group"
+                      className="px-5 sm:px-6 py-2.5 sm:py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono text-xs sm:text-sm rounded-lg hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center justify-center gap-2 group shadow-sm"
                     >
                       <Mail size={16} />
                       <span>Contact Me</span>
@@ -437,7 +429,7 @@ export default function Portfolio() {
                       href="https://drive.google.com/file/d/1Md1bVV6XdaCQzzZLLza8BL4ylpVJLjW8/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono text-sm rounded-lg hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center gap-2 group"
+                      className="px-5 sm:px-6 py-2.5 sm:py-3 bg-cyan-600/10 border border-cyan-500 text-cyan-400 font-mono text-xs sm:text-sm rounded-lg hover:bg-cyan-500 hover:text-black transition-all duration-300 flex items-center justify-center gap-2 group shadow-sm"
                     >
                       <FileText size={16} />
                       <span>View Resume</span>
@@ -491,13 +483,13 @@ export default function Portfolio() {
             <SectionTitle icon={Code}>Projects</SectionTitle>
 
             {/* Project Filter Controls */}
-            <div className="flex justify-center mb-12">
-              <div className="flex gap-4 flex-wrap justify-center">
+            <div className="flex justify-center mb-8 sm:mb-12">
+              <div className="flex gap-2 sm:gap-4 flex-wrap justify-center px-2">
                 {["All", "Individual", "Research", "Group", "Open Source"].map((filter) => (
                   <button
                     key={filter}
                     onClick={() => setProjectFilter(filter)}
-                    className={`px-6 py-2 rounded-full font-mono text-sm transition-all duration-300 border ${projectFilter === filter
+                    className={`px-3.5 sm:px-6 py-1.5 sm:py-2 rounded-full font-mono text-xs sm:text-sm transition-all duration-300 border ${projectFilter === filter
                       ? "bg-cyan-500/20 border-cyan-500 text-cyan-400 shadow-[0_0_15px_rgba(0,243,255,0.3)]"
                       : "bg-gray-900/50 border-gray-800 text-gray-500 hover:border-cyan-500/50 hover:text-cyan-300"
                       }`}
@@ -678,9 +670,9 @@ export default function Portfolio() {
                         setSelectedProject(project);
                         setActiveScreenshotIdx(0);
                       }}
-                      className={`w-[320px] md:w-[400px] h-auto min-h-[580px] snap-center group p-0 bg-gray-900/20 flex flex-col shrink-0 overflow-hidden cursor-pointer hover:border-cyan-400/60 transition-all ${project.featured ? "border-cyan-500/50 shadow-[0_0_20px_rgba(0,243,255,0.12)]" : "border-gray-800"}`}
+                      className={`w-[85vw] max-w-[340px] sm:w-[360px] md:w-[400px] h-auto min-h-[540px] md:min-h-[580px] snap-center group p-0 bg-gray-900/20 flex flex-col shrink-0 overflow-hidden cursor-pointer hover:border-cyan-400/60 transition-all ${project.featured ? "border-cyan-500/50 shadow-[0_0_20px_rgba(0,243,255,0.12)]" : "border-gray-800"}`}
                     >
-                      <div className="relative h-56 overflow-hidden border-b border-gray-800 shrink-0">
+                      <div className="relative h-48 sm:h-56 overflow-hidden border-b border-gray-800 shrink-0">
                         <div className="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition-colors z-10" />
                         {project.featured && (
                           <div className="absolute top-2 left-2 bg-black/85 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono font-bold text-cyan-300 border border-cyan-500/60 rounded flex items-center gap-1.5 z-20 shadow-[0_0_15px_rgba(0,243,255,0.25)]">
@@ -698,7 +690,7 @@ export default function Portfolio() {
                         </div>
                       </div>
 
-                      <div className="p-6 flex flex-col flex-grow">
+                      <div className="p-4 sm:p-6 flex flex-col flex-grow">
                         <div className="flex justify-between items-start mb-3">
                           <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-cyan-400 transition-colors font-mono line-clamp-3 min-h-[3.5rem] leading-snug">
                             {project.title}
@@ -821,7 +813,7 @@ export default function Portfolio() {
           <div className="max-w-7xl mx-auto w-full relative z-10">
             <SectionTitle icon={BookOpen}>Education</SectionTitle>
 
-            <div className="mt-20 md:mt-32 relative pt-12">
+            <div className="mt-8 md:mt-28 relative pt-4 md:pt-12">
               {/* Horizontal Line Background */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gray-800 hidden md:block"></div>
               {/* Progress Line */}
@@ -831,20 +823,19 @@ export default function Portfolio() {
               <div className="absolute -top-[10px] left-0 hidden md:block w-6 h-6 rounded-full bg-black border-4 border-blue-500 z-10 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
               <div className="absolute -top-[10px] left-1/2 hidden md:block w-6 h-6 rounded-full bg-black border-4 border-cyan-500 z-10 shadow-[0_0_20px_rgba(0,243,255,0.5)]"></div>
 
-              <div className="grid md:grid-cols-2 gap-16 md:gap-8 relative z-10">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8 relative z-10">
                 {/* University */}
-                <div className="relative group flex flex-col items-center md:items-start text-center md:text-left">
+                <div className="relative group flex flex-col items-center md:items-start text-center md:text-left bg-gray-900/30 border border-gray-800/80 p-6 md:p-0 md:bg-transparent md:border-0 rounded-2xl">
                   <div className="md:pr-8 hover:-translate-y-2 transition-transform duration-500 flex flex-col items-center md:items-start w-full">
-                    <div className="w-4 h-4 rounded-full bg-blue-500 mb-4 md:hidden"></div>
-                    <div className="text-blue-400 mb-4 flex justify-center md:justify-start">
+                    <div className="text-blue-400 mb-3 md:mb-4 flex justify-center md:justify-start">
                       <BookOpen size={28} />
                     </div>
-                    <p className="text-blue-400 font-mono text-sm uppercase tracking-wider mb-1">BSc (Hons) in Computer Science</p>
-                    <h4 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">University of Jaffna</h4>
-                    <p className="text-gray-300 font-semibold mt-3 font-mono text-sm">
+                    <p className="text-blue-400 font-mono text-xs sm:text-sm uppercase tracking-wider mb-1">BSc (Hons) in Computer Science</p>
+                    <h4 className="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">University of Jaffna</h4>
+                    <p className="text-gray-300 font-semibold mt-3 font-mono text-xs sm:text-sm">
                       GPA: 3.3 / 4.0 &nbsp;·&nbsp; 57 / 120 Credits
                     </p>
-                    <div className="mt-6 inline-flex items-center gap-2 px-4 py-1.5 bg-blue-900/20 text-blue-300 text-xs font-mono rounded-full border border-blue-500/30 group-hover:border-blue-500 transition-colors">
+                    <div className="mt-5 sm:mt-6 inline-flex items-center gap-2 px-4 py-1.5 bg-blue-900/20 text-blue-300 text-xs font-mono rounded-full border border-blue-500/30 group-hover:border-blue-500 transition-colors">
                       <Zap size={12} className="text-blue-500" />
                       2023 – Present
                     </div>
@@ -852,18 +843,17 @@ export default function Portfolio() {
                 </div>
 
                 {/* High School */}
-                <div className="relative group flex flex-col items-center md:items-start text-center md:text-left md:pl-8">
+                <div className="relative group flex flex-col items-center md:items-start text-center md:text-left md:pl-8 bg-gray-900/30 border border-gray-800/80 p-6 md:p-0 md:bg-transparent md:border-0 rounded-2xl">
                   <div className="hover:-translate-y-2 transition-transform duration-500 flex flex-col items-center md:items-start w-full">
-                    <div className="w-4 h-4 rounded-full bg-cyan-500 mb-4 md:hidden"></div>
-                    <div className="text-cyan-400 mb-4 flex justify-center md:justify-start">
+                    <div className="text-cyan-400 mb-3 md:mb-4 flex justify-center md:justify-start">
                       <Award size={28} />
                     </div>
-                    <p className="text-cyan-400 font-mono text-sm uppercase tracking-wider mb-1">G.C.E. Advanced Level – Physical Science &amp; ICT</p>
-                    <h4 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">DS Senanayake National School</h4>
-                    <p className="text-gray-400 mt-4 text-sm max-w-sm leading-relaxed">
+                    <p className="text-cyan-400 font-mono text-xs sm:text-sm uppercase tracking-wider mb-1">G.C.E. Advanced Level – Physical Science &amp; ICT</p>
+                    <h4 className="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">DS Senanayake National School</h4>
+                    <p className="text-gray-400 mt-3 sm:mt-4 text-xs sm:text-sm max-w-sm leading-relaxed">
                       Foundation in physics, mathematics, and information technology.
                     </p>
-                    <div className="mt-6 inline-flex items-center gap-2 px-4 py-1.5 bg-cyan-900/20 text-cyan-300 text-xs font-mono rounded-full border border-cyan-500/30 group-hover:border-cyan-500 transition-colors">
+                    <div className="mt-5 sm:mt-6 inline-flex items-center gap-2 px-4 py-1.5 bg-cyan-900/20 text-cyan-300 text-xs font-mono rounded-full border border-cyan-500/30 group-hover:border-cyan-500 transition-colors">
                       <Zap size={12} className="text-cyan-500" />
                       2018 – 2020
                     </div>
@@ -971,13 +961,13 @@ export default function Portfolio() {
             <SectionTitle icon={Globe}>Leadership &amp; Volunteering</SectionTitle>
 
             {/* Journey Filter Controls */}
-            <div className="flex justify-center mt-12 mb-16">
-              <div className="flex gap-4 flex-wrap justify-center">
+            <div className="flex justify-center mt-6 sm:mt-12 mb-8 sm:mb-16">
+              <div className="flex gap-2.5 sm:gap-4 flex-wrap justify-center">
                 {["Leadership", "Volunteering"].map((filter) => (
                   <button
                     key={filter}
                     onClick={() => setJourneyFilter(filter)}
-                    className={`px-6 py-2 rounded-full font-mono text-sm transition-all duration-300 border ${journeyFilter === filter
+                    className={`px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-mono text-xs sm:text-sm transition-all duration-300 border ${journeyFilter === filter
                       ? "bg-cyan-500/20 border-cyan-500 text-cyan-400 shadow-[0_0_15px_rgba(0,243,255,0.3)]"
                       : "bg-gray-900/50 border-gray-800 text-gray-500 hover:border-cyan-500/50 hover:text-cyan-300"
                       }`}
@@ -988,7 +978,7 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div className="relative min-h-[500px]">
+            <div className="relative min-h-[400px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={journeyFilter}
@@ -998,18 +988,18 @@ export default function Portfolio() {
                   transition={{ duration: 0.4 }}
                 >
                   {journeyFilter === "Leadership" && (
-                    <div className="relative border-l-2 border-gray-800 ml-4 md:ml-6 space-y-12">
+                    <div className="relative border-l-2 border-gray-800 ml-2 sm:ml-4 md:ml-6 space-y-8 sm:space-y-12">
                       {/* Item 1 */}
-                      <div className="relative pl-8 md:pl-12 group">
-                        <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
+                      <div className="relative pl-6 sm:pl-8 md:pl-12 group">
+                        <div className="absolute -left-[9px] sm:-left-[11px] top-4 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
                         <div className="absolute -left-1 top-[26px] w-8 h-px bg-cyan-500/50 hidden md:block"></div>
-                        <div className="py-4 hover:-translate-y-2 transition-transform duration-300">
-                          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-2">
+                        <div className="py-2 sm:py-4 hover:-translate-y-1 sm:hover:-translate-y-2 transition-transform duration-300">
+                          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 sm:gap-4 mb-2">
                             <div>
-                              <h4 className="text-2xl md:text-3xl font-bold text-white group-hover:text-cyan-400 transition-colors tracking-tight font-mono">
+                              <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-white group-hover:text-cyan-400 transition-colors tracking-tight font-mono">
                                 Media and Communication Lead
                               </h4>
-                              <p className="text-cyan-400 font-medium text-base md:text-lg flex items-center gap-2 mt-2">
+                              <p className="text-cyan-400 font-medium text-sm sm:text-base md:text-lg flex items-center gap-2 mt-1 sm:mt-2">
                                 <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
                                 AWS Cloud Club - UOJ
                               </p>
@@ -1022,16 +1012,16 @@ export default function Portfolio() {
                       </div>
 
                       {/* Item 2 */}
-                      <div className="relative pl-8 md:pl-12 group">
-                        <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
+                      <div className="relative pl-6 sm:pl-8 md:pl-12 group">
+                        <div className="absolute -left-[9px] sm:-left-[11px] top-4 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-black border-2 border-cyan-500 group-hover:bg-cyan-500 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.5)]"></div>
                         <div className="absolute -left-1 top-[26px] w-8 h-px bg-cyan-500/50 hidden md:block"></div>
-                        <div className="py-4 hover:-translate-y-2 transition-transform duration-300">
-                          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-2">
+                        <div className="py-2 sm:py-4 hover:-translate-y-1 sm:hover:-translate-y-2 transition-transform duration-300">
+                          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 sm:gap-4 mb-2">
                             <div>
-                              <h4 className="text-2xl md:text-3xl font-bold text-white group-hover:text-cyan-400 transition-colors tracking-tight font-mono">
+                              <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-white group-hover:text-cyan-400 transition-colors tracking-tight font-mono">
                                 Volunteer Management Coordinator
                               </h4>
-                              <p className="text-cyan-400 font-medium text-base md:text-lg flex items-center gap-2 mt-2">
+                              <p className="text-cyan-400 font-medium text-sm sm:text-base md:text-lg flex items-center gap-2 mt-1 sm:mt-2">
                                 <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
                                 IEEE SLSAC
                               </p>
@@ -1044,16 +1034,16 @@ export default function Portfolio() {
                       </div>
 
                       {/* Item 3 */}
-                      <div className="relative pl-8 md:pl-12 group">
-                        <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-black border-2 border-blue-500 group-hover:bg-blue-500 transition-colors"></div>
+                      <div className="relative pl-6 sm:pl-8 md:pl-12 group">
+                        <div className="absolute -left-[9px] sm:-left-[11px] top-4 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-black border-2 border-blue-500 group-hover:bg-blue-500 transition-colors"></div>
                         <div className="absolute -left-1 top-[26px] w-8 h-px bg-blue-500/50 hidden md:block"></div>
-                        <div className="py-4 hover:-translate-y-2 transition-transform duration-300">
-                          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-2">
+                        <div className="py-2 sm:py-4 hover:-translate-y-1 sm:hover:-translate-y-2 transition-transform duration-300">
+                          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 sm:gap-4 mb-2">
                             <div>
-                              <h4 className="text-2xl md:text-3xl font-bold text-white group-hover:text-cyan-400 transition-colors tracking-tight font-mono">
+                              <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-white group-hover:text-cyan-400 transition-colors tracking-tight font-mono">
                                 Chairperson
                               </h4>
-                              <p className="text-cyan-400 font-medium text-base md:text-lg flex items-center gap-2 mt-2">
+                              <p className="text-cyan-400 font-medium text-sm sm:text-base md:text-lg flex items-center gap-2 mt-1 sm:mt-2">
                                 <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
                                 IEEE Student Branch - University of Jaffna
                               </p>
@@ -1068,7 +1058,7 @@ export default function Portfolio() {
                   )}
 
                   {journeyFilter === "Volunteering" && (
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto pt-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 max-w-4xl mx-auto pt-4 sm:pt-6">
                       {[
                         { role: "Event Chair", event: "YarlInsight 2.0", org: "IEEE-SB-UoJ" },
                         { role: "Vice Chair - Design", event: "JamborIEEE 2025", org: "IEEE SLSAC" },
@@ -1076,10 +1066,10 @@ export default function Portfolio() {
                         { role: "Program Team Member", event: "TechFest", org: "IEEE Techverse Sri Lanka" },
                         { role: "Public Visibility Team Member", event: "YarlInsight 1.0", org: "IEEE-SB-UoJ" }
                       ].map((vol, idx) => (
-                        <div key={idx} className="group py-6 border-b border-gray-800/50 hover:border-cyan-500/50 transition-all duration-300">
-                          <h4 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors font-mono">{vol.role}</h4>
+                        <div key={idx} className="group py-4 sm:py-6 border-b border-gray-800/50 hover:border-cyan-500/50 transition-all duration-300">
+                          <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-400 transition-colors font-mono">{vol.role}</h4>
                           <p className="text-cyan-400 font-medium text-sm mt-1">{vol.event}</p>
-                          <p className="text-gray-500 text-xs font-mono uppercase tracking-wider mt-4 flex items-center gap-2">
+                          <p className="text-gray-500 text-xs font-mono uppercase tracking-wider mt-3 sm:mt-4 flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/50"></span>
                             {vol.org}
                           </p>
@@ -1219,40 +1209,40 @@ export default function Portfolio() {
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
 
               {/* Modal Header */}
-              <div className="p-5 md:p-6 border-b border-gray-800/80 flex justify-between items-start gap-4 shrink-0 bg-black/40">
-                <div className="pr-4">
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <span className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-blue-900/40 text-cyan-300 border border-blue-800/60 uppercase tracking-wider font-semibold">
+              <div className="p-4 sm:p-5 md:p-6 border-b border-gray-800/80 flex justify-between items-start gap-3 sm:gap-4 shrink-0 bg-black/40">
+                <div className="pr-2 sm:pr-4">
+                  <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-2">
+                    <span className="text-[10px] sm:text-[11px] font-mono px-2 sm:px-2.5 py-0.5 rounded bg-blue-900/40 text-cyan-300 border border-blue-800/60 uppercase tracking-wider font-semibold">
                       {selectedProject.category}
                     </span>
-                    <span className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-cyan-950/60 text-cyan-400 border border-cyan-500/40 uppercase tracking-wider font-semibold">
+                    <span className="text-[10px] sm:text-[11px] font-mono px-2 sm:px-2.5 py-0.5 rounded bg-cyan-950/60 text-cyan-400 border border-cyan-500/40 uppercase tracking-wider font-semibold">
                       STATUS: {selectedProject.status}
                     </span>
                     {selectedProject.featured && (
-                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 uppercase tracking-wider font-bold flex items-center gap-1.5 shadow-[0_0_10px_rgba(0,243,255,0.2)]">
+                      <span className="text-[10px] sm:text-[11px] font-mono px-2 sm:px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 uppercase tracking-wider font-bold flex items-center gap-1.5 shadow-[0_0_10px_rgba(0,243,255,0.2)]">
                         <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
                         FEATURED
                       </span>
                     )}
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white font-mono tracking-tight">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white font-mono tracking-tight leading-snug">
                     {selectedProject.title}
                   </h3>
                 </div>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="p-2 rounded-lg bg-gray-900/90 hover:bg-cyan-950/60 text-gray-400 hover:text-cyan-400 border border-gray-800 hover:border-cyan-500/60 transition-colors shrink-0"
+                  className="p-1.5 sm:p-2 rounded-lg bg-gray-900/90 hover:bg-cyan-950/60 text-gray-400 hover:text-cyan-400 border border-gray-800 hover:border-cyan-500/60 transition-colors shrink-0"
                   aria-label="Close modal"
                 >
-                  <X size={20} />
+                  <X size={18} className="sm:w-5 sm:h-5" />
                 </button>
               </div>
 
               {/* Modal Body */}
-              <div className="overflow-y-auto p-5 md:p-8 space-y-6">
+              <div className="overflow-y-auto p-4 sm:p-6 md:p-8 space-y-5 sm:space-y-6">
                 {/* Main Screenshot & Gallery */}
                 <div>
-                  <div className="relative h-64 md:h-[400px] w-full rounded-xl overflow-hidden border border-gray-800 bg-black shadow-inner flex items-center justify-center">
+                  <div className="relative h-48 sm:h-64 md:h-[380px] w-full rounded-xl overflow-hidden border border-gray-800 bg-black shadow-inner flex items-center justify-center">
                     <img
                       src={
                         selectedProject.screenshots && selectedProject.screenshots[activeScreenshotIdx]
@@ -1267,13 +1257,13 @@ export default function Portfolio() {
                   {/* Multiple Screenshots Selector */}
                   {selectedProject.screenshots && selectedProject.screenshots.length > 1 && (
                     <div className="mt-3">
-                      <p className="text-xs font-mono text-gray-500 mb-2">Available Views / Screenshots:</p>
-                      <div className="flex gap-3 flex-wrap">
+                      <p className="text-[11px] sm:text-xs font-mono text-gray-500 mb-2">Available Views / Screenshots:</p>
+                      <div className="flex gap-2 sm:gap-3 flex-wrap">
                         {selectedProject.screenshots.map((shot, sIdx) => (
                           <button
                             key={sIdx}
                             onClick={() => setActiveScreenshotIdx(sIdx)}
-                            className={`relative h-16 w-28 rounded-lg overflow-hidden border-2 transition-all ${activeScreenshotIdx === sIdx
+                            className={`relative h-12 w-20 sm:h-16 sm:w-28 rounded-lg overflow-hidden border-2 transition-all ${activeScreenshotIdx === sIdx
                               ? "border-cyan-400 scale-105 shadow-[0_0_12px_rgba(0,243,255,0.4)] ring-1 ring-cyan-400"
                               : "border-gray-800 opacity-60 hover:opacity-100"
                               }`}
@@ -1356,15 +1346,15 @@ export default function Portfolio() {
               </div>
 
               {/* Modal Footer / Action Links */}
-              <div className="p-5 md:p-6 border-t border-gray-800/80 bg-black/60 flex flex-wrap gap-3 shrink-0">
+              <div className="p-3.5 sm:p-5 md:p-6 border-t border-gray-800/80 bg-black/60 flex flex-col sm:flex-row gap-2.5 sm:gap-3 shrink-0">
                 {selectedProject.github && (
                   <a
                     href={selectedProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-widest border border-gray-800 hover:border-cyan-500/50 px-4 py-2.5 rounded-lg bg-black/50"
+                    className="flex flex-1 justify-center items-center gap-2 text-xs sm:text-sm font-bold text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-widest border border-gray-800 hover:border-cyan-500/50 px-3.5 py-2.5 rounded-lg bg-black/50"
                   >
-                    <Github size={18} />
+                    <Github size={16} className="sm:w-[18px] sm:h-[18px]" />
                     <span>View Repository</span>
                   </a>
                 )}
@@ -1373,9 +1363,9 @@ export default function Portfolio() {
                     href={selectedProject.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors uppercase tracking-widest border border-cyan-500/40 hover:border-cyan-500 px-4 py-2.5 rounded-lg bg-cyan-950/30 shadow-[0_0_15px_rgba(0,243,255,0.15)]"
+                    className="flex flex-1 justify-center items-center gap-2 text-xs sm:text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors uppercase tracking-widest border border-cyan-500/40 hover:border-cyan-500 px-3.5 py-2.5 rounded-lg bg-cyan-950/30 shadow-[0_0_15px_rgba(0,243,255,0.15)]"
                   >
-                    <ExternalLink size={18} />
+                    <ExternalLink size={16} className="sm:w-[18px] sm:h-[18px]" />
                     <span>Live Deployment</span>
                   </a>
                 )}
@@ -1384,14 +1374,14 @@ export default function Portfolio() {
                     href={selectedProject.playStore}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-1 justify-center items-center gap-2 text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors uppercase tracking-widest border border-cyan-500/40 hover:border-cyan-500 px-4 py-2.5 rounded-lg bg-cyan-950/30 shadow-[0_0_15px_rgba(0,243,255,0.15)]"
+                    className="flex flex-1 justify-center items-center gap-2 text-xs sm:text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors uppercase tracking-widest border border-cyan-500/40 hover:border-cyan-500 px-3.5 py-2.5 rounded-lg bg-cyan-950/30 shadow-[0_0_15px_rgba(0,243,255,0.15)]"
                   >
-                    <Play size={18} fill="currentColor" />
+                    <Play size={16} fill="currentColor" className="sm:w-[18px] sm:h-[18px]" />
                     <span>Google Play Store</span>
                   </a>
                 )}
                 {!selectedProject.github && !selectedProject.link && !selectedProject.playStore && (
-                  <div className="flex flex-1 justify-center items-center gap-2 text-xs font-mono font-semibold text-cyan-400 uppercase tracking-widest border border-cyan-500/30 px-4 py-2.5 rounded-lg bg-cyan-950/30 shadow-[0_0_10px_rgba(0,243,255,0.1)]">
+                  <div className="flex flex-1 justify-center items-center gap-2 text-xs font-mono font-semibold text-cyan-400 uppercase tracking-widest border border-cyan-500/30 px-3.5 py-2.5 rounded-lg bg-cyan-950/30 shadow-[0_0_10px_rgba(0,243,255,0.1)]">
                     <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
                     <span>Ongoing Scientific Research</span>
                   </div>

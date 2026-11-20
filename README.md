@@ -31,56 +31,7 @@
 
 <hr />
 
-<h2>📂 Project Structure</h2>
 
-<pre>
-portfolio/
-├── public/
-├── src/
-│   ├── components/
-│   ├── assets/
-│   ├── pages/
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── package.json
-├── vite.config.js
-└── README.md
-</pre>
-
-<hr />
-
-<h2>🛠️ Installation & Setup</h2>
-
-<pre>
-# Clone the repository
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/bhagyasandakelum/portfolioWebpage.git)
-
-# Navigate into the project
-cd YOUR_REPO_NAME
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-</pre>
-
-<p>Now open <code>http://localhost:5173</code> in your browser.</p>
-
-<hr />
-
-<h2>📦 Build for Production</h2>
-
-<pre>
-npm run build
-</pre>
-
-<p>
-This generates an optimized production build inside the <code>dist/</code> folder.
-</p>
-
-<hr />
 
 <h2>🎨 Features</h2>
 
@@ -101,24 +52,17 @@ The website is deployed on <strong>Vercel</strong>. Every push to the main branc
 </p>
 
 <p>
-🔗 <a href="https://bhagyaslive.vercel.app">https://bhagyaslive.vercel.app</a>
+🔗 <a href="https://bhagyasandakelum.me">https://bhagyasandakelum.me</a>
 </p>
 
-<hr />
 
-
-
-<h2>📄 License</h2>
-<p>
-This project is open-source. You may use parts of the design or code with proper credit.
-</p>
 
 <hr />
 
 <h2>📬 Contact</h2>
 <ul>
   <li><strong>Email:</strong> bhagyasandakelum02@gmail.com</li>
-  <li><strong>LinkedIn:</strong>linkedin.in/bhagyaslive</li>
+  <li><strong>LinkedIn:</strong>linkedin.in/bhagyasandakelum</li>
   <li><strong>GitHub:</strong> https://github.com/bhagyasandakelum</li>
 </ul>
 

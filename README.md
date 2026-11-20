@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://bhagyaslive.vercel.app" target="_blank">
+  <a href="https://bhagyasandakelum.me" target="_blank">
     🔗 <strong>Live Website</strong>
   </a>
 </p>
